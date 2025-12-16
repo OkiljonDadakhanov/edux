@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "cross-env DEPLOY_TARGET=github npm run build",
+    "predeploy": "cross-env DEPLOY_TARGET=github NEXT_PUBLIC_DEPLOY_TARGET=github npm run build",
     "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
   },
   "dependencies": {
