@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { headerData } from "../Header/Navigation/menuData";
+import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
-import HeaderLink from "../Header/Navigation/HeaderLink";
-import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
-import OlimpiadalarDropdown from "../Header/Navigation/OlimpiadalarDropdown";
+import HeaderLink from "./Navigation/HeaderLink";
+import MobileHeaderLink from "./Navigation/MobileHeaderLink";
+import OlimpiadalarDropdown from "./Navigation/OlimpiadalarDropdown";
 import Signin from "@/components/Auth/SignIn";
 import { Icon } from "@iconify/react";
 
