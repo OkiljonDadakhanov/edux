@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
+const isGithubPages = process.env.DEPLOY_TARGET === "github";
 
 const nextConfig = {
-  basePath: isProd ? "/E-learning" : "",
-  assetPrefix: isProd ? "/E-learning/" : "",
+  // Only use basePath for GitHub Pages, not for Vercel
+  basePath: isGithubPages ? "/E-learning" : "",
+  assetPrefix: isGithubPages ? "/E-learning/" : "",
   output: "export",
   images: {
     unoptimized: true,
