@@ -116,14 +116,18 @@ const Statistics = () => {
               <ResponsiveContainer width="100%" height={400}>
                 <PieChart>
                   <Pie
-                    data={category.items}
+                    data={category.items as any}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({ label, percent }) => `${label}: ${(percent * 100).toFixed(0)}%`}
+                    label={(props: any) => {
+                      const { name, percent } = props;
+                      return `${name}: ${((percent ?? 0) * 100).toFixed(0)}%`;
+                    }}
                     outerRadius={120}
                     fill="#8884d8"
                     dataKey="value"
+                    nameKey="label"
                   >
                     {category.items.map((entry, i) => (
                       <Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />
