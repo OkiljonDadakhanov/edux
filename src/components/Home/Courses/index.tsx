@@ -1,112 +1,79 @@
 "use client";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { courseData } from "@/app/api/data";
+import { lessonsData } from "@/app/api/lessonsData";
 import { getImagePrefix } from "@/utils/util";
 
 const Courses = () => {
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 2,
-        arrows: false,
-        autoplay: true,
-        speed: 500,
-        cssEase: "linear",
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            }
-        ]
-    };
-
-    const renderStars = (rating: number) => {
-        const fullStars = Math.floor(rating);
-        const halfStars = rating % 1 >= 0.5 ? 1 : 0;
-        const emptyStars = 5 - fullStars - halfStars;
-
-        return (
-            <>
-                {Array(fullStars).fill(<Icon icon="tabler:star-filled" className="text-yellow-500 text-xl inline-block" />)}
-                {halfStars > 0 && <Icon icon="tabler:star-half-filled" className="text-yellow-500 text-xl inline-block" />}
-                {Array(emptyStars).fill(<Icon icon="tabler:star-filled" className="text-gray-400 text-xl inline-block" />)}
-            </>
-        );
-    };
+    // Show only first 3 lessons on homepage
+    const featuredLessons = lessonsData.slice(0, 3);
 
     return (
         <section id="courses">
             <div className='container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4'>
-                <div className="sm:flex justify-between items-center mb-20">
-                    <h2 className="text-midnight_text text-4xl lg:text-5xl font-semibold mb-5 sm:mb-0">Online darslar.</h2>
-                    <Link href={'/'} className="text-primary text-lg font-medium hover:tracking-widest duration-500">Darslarni ko'rish&nbsp;&gt;&nbsp;</Link>
+                <div className="sm:flex justify-between items-center mb-12">
+                    <h2 className="text-midnight_text text-4xl lg:text-5xl font-semibold mb-5 sm:mb-0">
+                        Tahliliy darslar
+                    </h2>
+                    <Link 
+                        href={'/lessons'} 
+                        className="text-primary text-lg font-medium hover:tracking-widest duration-500 inline-flex items-center gap-2"
+                    >
+                        Barcha darslarni ko'rish
+                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
+                    </Link>
                 </div>
-                <Slider {...settings}>
-                    {courseData.map((items, i) => (
-                        <div key={i}>
-                            <div className='bg-white m-3 mb-12 px-3 pt-3 pb-12 shadow-course-shadow rounded-2xl h-full'>
-                                <div className="relative rounded-3xl">
-                                    <Image src={`${getImagePrefix()}${items.imgSrc}`} alt="course-image" width={389} height={262} className="m-auto clipPath" />
-                                    <div className="absolute right-5 -bottom-2 bg-secondary rounded-full p-6">
-                                        <h3 className="text-white uppercase text-center text-sm font-medium">best <br /> seller</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {featuredLessons.map((lesson) => (
+                        <Link
+                            key={lesson.id}
+                            href="/lessons"
+                            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
+                        >
+                            {/* Thumbnail */}
+                            <div className="relative h-48 overflow-hidden">
+                                <Image
+                                    src={`${getImagePrefix()}${lesson.imgSrc}`}
+                                    alt={lesson.title}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div className="absolute bottom-4 left-4 right-4">
+                                    <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-2">
+                                        <p className="text-white font-semibold text-sm">{lesson.subject}</p>
                                     </div>
                                 </div>
-
-                                <div className="px-3 pt-6">
-                                    <Link href="#" className='text-2xl font-bold text-black max-w-75% inline-block'>{items.heading}</Link>
-                                    <h3 className='text-base font-normal pt-6 text-black/75'>{items.name}</h3>
-                                    <div className="flex justify-between items-center py-6 border-b">
-                                        <div className="flex items-center gap-4">
-                                            <h3 className="text-red-700 text-2xl font-medium">{items.rating}</h3>
-                                            <div className="flex">
-                                                {renderStars(items.rating)} {/* Dynamic stars */}
-                                            </div>
-                                        </div>
-                                        {/* <h3 className="text-3xl font-medium">${items.price}</h3> */}
-                                    </div>
-                                    <div className="flex justify-between pt-6">
-                                        <div className="flex gap-4">
-                                            <Icon
-                                                icon="solar:notebook-minimalistic-outline"
-                                                className="text-primary text-xl inline-block me-2"
-                                            />
-                                            <h3 className="text-base font-medium text-black opacity-75">{items.classes} darslar</h3>
-                                        </div>
-                                        <div className="flex gap-4">
-                                            <Icon
-                                                icon="solar:users-group-rounded-linear"
-                                                className="text-primary text-xl inline-block me-2"
-                                            />
-                                            <h3 className="text-base font-medium text-black opacity-75">{items.students} o'quvchilar</h3>
-                                        </div>
-                                    </div>
+                                <div className="absolute top-4 right-4 bg-red-600 rounded-full p-3 group-hover:scale-110 transition-transform">
+                                    <Icon icon="solar:play-circle-bold" className="text-white text-2xl" />
                                 </div>
                             </div>
-                        </div>
+
+                            {/* Content */}
+                            <div className="p-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                                    {lesson.topic}
+                                </h3>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                                        <Icon icon="solar:user-bold" className="text-primary text-lg" />
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold text-gray-900 text-sm">{lesson.mentorName}</p>
+                                        <p className="text-xs text-gray-600">{lesson.mentorTitle}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-gray-600">
+                                    <Icon icon="solar:clock-circle-bold" className="text-primary" />
+                                    <span>Tahliliy dars</span>
+                                </div>
+                            </div>
+                        </Link>
                     ))}
-                </Slider>
+                </div>
             </div>
         </section>
     );

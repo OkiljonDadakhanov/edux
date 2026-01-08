@@ -1,12 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { getImagePrefix } from "@/utils/util";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Biz haqimizda - EduX",
-  description: "EduX - O'zbekistondagi eng yaxshi olimpiadalarga tayyorgarlik platformasi haqida ma'lumot",
+  description: "EduX - O'zbekistondagi eng nufuzli fan olimpiadalariga ishonchli tayyorgarlik platformasi",
 };
 
 const AboutPage = () => {
@@ -15,14 +13,93 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
         <div className="container mx-auto max-w-screen-xl px-4">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Biz haqimizda
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+              EduX
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              EduX - O'zbekistondagi eng yaxshi olimpiadalarga tayyorgarlik platformasi. 
-              Biz o'quvchilarga yuqori sifatli ta'lim berish va ularning bilimlarini rivojlantirishga yordam beramiz.
+            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+              Oʻzbekistondagi eng nufuzli fan olimpiadalariga ishonchli tayyorgarlik platformasi. 
+              Bunda maqsad aniq, ta'lim sifatli, natija kafolatli!
             </p>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100">
+              <p className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                EduX — bu shunchaki platforma emas.
+              </p>
+              <p className="text-xl md:text-2xl text-gray-800 font-semibold">
+                Bu — bilim, raqobat va rivojlanishni birlashtirgan yagona muhit!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What EduX Offers */}
+      <section className="py-20">
+        <div className="container mx-auto max-w-screen-xl px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            EduX sizga quyidagilarni taqdim etadi:
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-primary shadow-md hover:shadow-xl transition-all">
+              <Icon icon="solar:document-text-bold" className="text-4xl text-primary mb-4" />
+              <p className="text-lg font-semibold text-gray-800">
+                Real olimpiada formatidagi testlar
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border-l-4 border-green-500 shadow-md hover:shadow-xl transition-all">
+              <Icon icon="solar:graph-up-bold" className="text-4xl text-green-600 mb-4" />
+              <p className="text-lg font-semibold text-gray-800">
+                Har bir ishtirokdan so'ng batafsil tahlil va xatolar ustida ishlash
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border-l-4 border-purple-500 shadow-md hover:shadow-xl transition-all">
+              <Icon icon="solar:video-frame-play-vertical-bold" className="text-4xl text-purple-600 mb-4" />
+              <p className="text-lg font-semibold text-gray-800">
+                Bilimni chuqurlashtiruvchi onlayn tahliliy darslar
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border-l-4 border-orange-500 shadow-md hover:shadow-xl transition-all">
+              <Icon icon="solar:trophy-bold" className="text-4xl text-orange-600 mb-4" />
+              <p className="text-lg font-semibold text-gray-800">
+                Qiziqarli viktorinalar va bilim bellashuvlari
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-xl border-l-4 border-cyan-500 shadow-md hover:shadow-xl transition-all">
+              <Icon icon="solar:gift-bold" className="text-4xl text-cyan-600 mb-4" />
+              <p className="text-lg font-semibold text-gray-800">
+                Doimiy sovrinlar va bonuslar
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="bg-gray-50 py-20">
+        <div className="container mx-auto max-w-screen-xl px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+                Endi bahona yo'q!
+              </h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>
+                  Uyda o'tirgan holda ham olimpiadaga tayyorlanasiz, ishtirok etasiz va bilimingizni muntazam mustahkamlab borasiz. 
+                  Har bir ishtirokchi olimpiada yakuni bo'yicha to'plagan foizdan kelib chiqqan holda ballarni qo'lga kiritishadi. 
+                  Ballar doimiy jamlanib, Respublika bo'yicha reyting sistemasi shakllantiriladi. 
+                  Ballaringizni ushbu reyting sistemasida doimiy kuzatib borishingiz mumkin.
+                </p>
+                <p className="font-semibold text-gray-900">
+                  Yuqori ballarni jamlagan ishtirokchilar Fan olimpiadalari markazi va EduX loyihasining maxsus sertifikatlari bilan taqdirlanadi.
+                </p>
+                <p className="font-semibold text-primary text-xl">
+                  Eng yuqori ball to'plagan ishtirokchilar esa Xalqaro olimpiadalarda ishtirok etuvchi Terma jamoa zahirasiga qabul qilinishi mumkin.
+                </p>
+                <p className="text-center text-2xl md:text-3xl font-bold text-gray-900 pt-6 border-t-2 border-gray-200">
+                  EduX — bilim va yutuqlar maydoni.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -30,93 +107,23 @@ const AboutPage = () => {
       {/* Mission Section */}
       <section className="py-20">
         <div className="container mx-auto max-w-screen-xl px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Bizning missiyamiz</h2>
-              <p className="text-lg text-gray-600 mb-4">
-                Biz har bir o'quvchiga olimpiadalarda muvaffaqiyatga erishish uchun zarur bo'lgan bilim va ko'nikmalarni 
-                taqdim etishni maqsad qilganmiz. Platformamiz orqali o'quvchilar professional ustozlar rahbarligida 
-                o'qishlari va o'z bilimlarini sinab ko'rishlari mumkin.
-              </p>
-              <p className="text-lg text-gray-600">
-                EduX jamoasi tajribali pedagog va dasturchilardan iborat bo'lib, biz doimiy ravishda platformani 
-                takomillashtirish va yangi xususiyatlarni qo'shish ustida ishlaymiz.
-              </p>
-            </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image 
-                src={`${getImagePrefix()}images/banner/about.jpg`}
-                alt="Bizning jamoa"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto max-w-screen-xl px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-            Nima uchun aynan EduX?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon icon="solar:book-bold" className="text-blue-600 text-3xl" />
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+              Bizning missiyamiz
+            </h2>
+            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-12 shadow-lg border border-primary/20">
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>
+                  Har bir o'quvchini fan olimpiadalarida muvaffaqiyatga erishishi uchun zarur bo'lgan puxta bilim hamda amaliy ko'nikmalar bilan ta'minlashni maqsad qilganmiz. 
+                  EduX platformasi orqali o'quvchilar professional va tajribali ustozlar rahbarligida ta'lim olib, 
+                  o'z bilimlarini real topshiriqlar orqali sinovdan o'tkazish imkoniyatiga ega bo'ladilar.
+                </p>
+                <p>
+                  EduX jamoasi malakali pedagoglar, shuningdek, zamonaviy texnologiyalarni chuqur biladigan dasturchilardan tashkil topgan. 
+                  Biz ta'lim sifati va foydalanuvchi tajribasini doimiy ravishda oshirib borish, platformani takomillashtirish hamda 
+                  yangi imkoniyatlar bilan boyitish ustida uzluksiz ish olib boramiz.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Sifatli ta'lim</h3>
-              <p className="text-gray-600">
-                Tajribali ustozlar tomonidan tayyorlangan darslar va o'quv materiallari orqali 
-                o'quvchilar yuqori sifatli ta'lim olishadi.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon icon="solar:graph-up-bold" className="text-green-600 text-3xl" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">O'sish va taraqqiyot</h3>
-              <p className="text-gray-600">
-                O'quvchilar reytingi tizimi orqali o'z o'sishlarini kuzatib borishlari va 
-                boshqa o'quvchilar bilan raqobatlashishlari mumkin.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon icon="solar:users-group-rounded-bold" className="text-purple-600 text-3xl" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Hamjamiyat</h3>
-              <p className="text-gray-600">
-                O'quvchilar bir-birlari bilan fikr almashishlari va tajriba ulashishlari 
-                uchun qulay muhit yaratilgan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20">
-        <div className="container mx-auto max-w-screen-xl px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-blue-600 mb-2">5000+</div>
-              <div className="text-gray-600 text-lg">Faol o'quvchilar</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-green-600 mb-2">50+</div>
-              <div className="text-gray-600 text-lg">Professional ustozlar</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-purple-600 mb-2">1000+</div>
-              <div className="text-gray-600 text-lg">Video darslar</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-orange-600 mb-2">95%</div>
-              <div className="text-gray-600 text-lg">Mamnun o'quvchilar</div>
             </div>
           </div>
         </div>

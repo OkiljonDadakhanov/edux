@@ -65,7 +65,7 @@ const SampleQuestions = () => {
   };
 
   return (
-    <section id="sample-questions" className="bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
+    <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
       <div className="container mx-auto max-w-screen-xl px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-semibold text-gray-900 mb-4">

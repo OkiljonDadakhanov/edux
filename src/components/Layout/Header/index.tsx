@@ -57,16 +57,28 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white ${
-        sticky ? "shadow-lg py-4" : "py-6"
+        sticky ? "shadow-lg" : ""
       }`}
     >
-      <div className="container mx-auto max-w-screen-xl px-4">
-        <div className="flex items-center justify-between">
+      {/* Top notice bar */}
+      <div className="w-full bg-amber-50 border-b border-amber-200">
+        <div className="container mx-auto max-w-screen-2xl px-4">
+          <div className="flex items-center justify-center gap-2 py-2 text-xs sm:text-sm text-amber-800">
+            <Icon icon="solar:warning-triangle-bold" className="text-base sm:text-lg" />
+            <p className="font-medium text-center">
+              Platforma test rejimida bepul ishlamoqda!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto max-w-screen-2xl px-4 py-3 sm:py-4">
+        <div className="flex items-center justify-between gap-6">
           {/* Logo */}
           <Logo />
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex flex-1 items-center justify-center gap-6 xl:gap-8 flex-nowrap">
             {headerData.map((item, index) => {
               if (item.label === "Olimpiadalar") {
                 return <OlimpiadalarDropdown key={index} />;
@@ -76,10 +88,10 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             <button
               onClick={() => setIsSignInOpen(true)}
-              className="bg-primary text-white px-6 py-3 rounded-full text-base font-medium hover:bg-primary/20 hover:text-primary transition"
+              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/20 hover:text-primary transition"
             >
               Kirish
             </button>

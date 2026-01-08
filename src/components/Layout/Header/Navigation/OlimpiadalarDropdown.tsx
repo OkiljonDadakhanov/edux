@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const subjects = [
   { id: 1, name: "Matematika", grades: ["7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
@@ -13,42 +12,32 @@ const subjects = [
 const OlimpiadalarDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState<number | null>(null);
-  const [activeHash, setActiveHash] = useState("");
-  const [isActive, setIsActive] = useState(false);
-  const path = usePathname();
+  const closeTimeoutRef = useRef<number | null>(null);
 
-  // Track hash changes
-  useEffect(() => {
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash);
-    };
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
 
-    setActiveHash(window.location.hash);
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  // Check if this menu item is active
-  useEffect(() => {
-    setIsActive(activeHash === "#courses" || (path === "/" && activeHash === "#courses"));
-  }, [path, activeHash]);
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setIsOpen(false);
+      setSelectedSubject(null);
+    }, 150);
+  };
 
   return (
     <div
       className="relative inline-block"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => {
-        setIsOpen(false);
-        setSelectedSubject(null);
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <Link
         href="/#courses"
-        className={`flex items-center gap-1 text-lg relative transition-colors duration-200 ${
-          isActive
-            ? "text-black after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1"
-            : "text-gray-600 hover:text-black"
-        }`}
+        className="flex items-center gap-2 px-3 py-2 text-sm lg:text-sm xl:text-base text-gray-700 hover:text-black hover:bg-gray-100 rounded-full transition-colors duration-200 whitespace-nowrap"
       >
         Olimpiadalar
         <svg

@@ -5,7 +5,6 @@ import Mentor from "@/components/Home/Mentor";
 import Testimonial from "@/components/Home/Testimonials";
 import Newsletter from "@/components/Home/Newsletter";
 import Stat from "@/components/Stat/index";
-import SampleQuestions from "@/components/Home/SampleQuestions";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "EduX - Olimpiadalarga tayyorgarlik platformasi",
@@ -16,9 +15,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Courses />
-      <SampleQuestions />
       <Stat />
+      <Courses />
+      
       <Testimonial />
       <Mentor />
       <Newsletter />

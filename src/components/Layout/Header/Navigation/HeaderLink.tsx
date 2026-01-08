@@ -1,63 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { HeaderItem } from "../../../../types/menu";
-import { usePathname } from "next/navigation";
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
-  const path = usePathname();
-  const [isActive, setIsActive] = useState(false);
-  const [activeHash, setActiveHash] = useState("");
-
-  // Track hash changes
-  useEffect(() => {
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash);
-    };
-
-    setActiveHash(window.location.hash);
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  // Active state
-  useEffect(() => {
-    // Check if it's home page
-    if (item.href === "/" && path === "/" && !activeHash) {
-      setIsActive(true);
-      return;
-    }
-
-    // Check if it's a hash link
-    if (item.href.includes("#")) {
-      const hashPart = item.href.split("#")[1];
-      if (hashPart && activeHash === `#${hashPart}`) {
-        setIsActive(true);
-        return;
-      }
-    }
-
-    // Check if path matches
-    if (path !== "/" && item.href === path) {
-      setIsActive(true);
-      return;
-    }
-
-    // Check submenu
-    if (item.submenu && item.submenu.some((subItem) => {
-      if (subItem.href.includes("#")) {
-        const hashPart = subItem.href.split("#")[1];
-        return hashPart && activeHash === `#${hashPart}`;
-      }
-      return path === subItem.href;
-    })) {
-      setIsActive(true);
-      return;
-    }
-
-    setIsActive(false);
-  }, [path, activeHash, item.href, item.submenu]);
 
   return (
     <div
@@ -68,11 +15,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       {/* MAIN LINK */}
       <Link
         href={item.href}
-        className={`flex items-center gap-1 text-lg relative transition-colors duration-200 ${
-          isActive
-            ? "text-black after:absolute after:w-8 after:h-1 after:bg-primary after:rounded-full after:-bottom-1"
-            : "text-gray-600 hover:text-black"
-        }`}
+        className="flex items-center gap-2 px-3 py-2 text-sm lg:text-sm xl:text-base text-gray-700 hover:text-black hover:bg-gray-100 rounded-full transition-colors duration-200 whitespace-nowrap"
       >
         {item.label}
 
@@ -108,26 +51,15 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
             animate-fade-slide
           "
         >
-          {item.submenu.map((subItem, index) => {
-            const isSubItemActive = path === subItem.href;
-            return (
-              <Link
-                key={index}
-                href={subItem.href}
-                className={`
-                  block px-4 py-3 text-sm rounded-md 
-                  transition-all duration-200
-                  ${
-                    isSubItemActive
-                      ? "bg-primary text-white"
-                      : "text-gray-700 dark:text-white hover:bg-primary hover:text-white"
-                  }
-                `}
-              >
-                {subItem.label}
-              </Link>
-            );
-          })}
+          {item.submenu.map((subItem, index) => (
+            <Link
+              key={index}
+              href={subItem.href}
+              className="block px-4 py-3 text-sm rounded-md text-gray-700 dark:text-white hover:bg-primary hover:text-white transition-all duration-200"
+            >
+              {subItem.label}
+            </Link>
+          ))}
         </div>
       )}
     </div>
