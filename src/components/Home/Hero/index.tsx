@@ -29,6 +29,7 @@ const Hero = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000,
+        pauseOnHover: false,
         fade: true,
         cssEase: "linear",
         beforeChange: (current: number, next: number) => setCurrentSlide(next),
