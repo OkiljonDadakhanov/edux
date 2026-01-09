@@ -45,11 +45,11 @@ const Hero = () => {
     return (
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
-                <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center'>
-                    <div className='col-span-6 flex flex-col gap-8'>
-                        <Slider {...settings} className="hero-slider">
-                            {/* Slide 1: Top 3 Students */}
-                            <div className="px-2">
+                <Slider {...settings} className="hero-slider">
+                    {/* Slide 1: Top 3 Students */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-8'>
                                 <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
                                     <Icon
                                         icon="solar:trophy-bold"
@@ -86,10 +86,40 @@ const Hero = () => {
                                     Barcha reytinglarni ko'rish
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
+                                <div className="relative rounded-full pt-5 lg:pt-0">
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
+                                        <Icon
+                                            icon="solar:magnifer-linear"
+                                            className="text-white text-4xl inline-block"
+                                        />
+                                    </button>
+                                </div>
+                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                    </div>
+                                </div>
                             </div>
+                            <div className='col-span-6 flex justify-center'>
+                                <Image src={`${getImagePrefix()}images/banner/mahila.png`} alt="nothing" width={1000} height={805} />
+                            </div>
+                        </div>
+                    </div>
 
-                            {/* Slide 2: Today's Lessons */}
-                            <div className="px-2">
+                    {/* Slide 2: Today's Lessons */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-8'>
                                 <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
                                     <Icon
                                         icon="solar:calendar-bold"
@@ -140,10 +170,40 @@ const Hero = () => {
                                     Barcha darslarni ko'rish
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
+                                <div className="relative rounded-full pt-5 lg:pt-0">
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
+                                        <Icon
+                                            icon="solar:magnifer-linear"
+                                            className="text-white text-4xl inline-block"
+                                        />
+                                    </button>
+                                </div>
+                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                    </div>
+                                </div>
                             </div>
+                            <div className='col-span-6 flex justify-center'>
+                                <Image src={`${getImagePrefix()}images/banner/mahila.png`} alt="nothing" width={1000} height={805} />
+                            </div>
+                        </div>
+                    </div>
 
-                            {/* Slide 3: Motivational */}
-                            <div className="px-2">
+                    {/* Slide 3: Motivational */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-8'>
                                 <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
                                     <Icon
                                         icon="solar:star-bold"
@@ -159,36 +219,36 @@ const Hero = () => {
                                 <h3 className='text-black/70 text-lg pt-5 lg:pt-0'>
                                     5000+ o'quvchi biz bilan o'qib, olimpiadalarda yuqori natijalarga erishmoqda.
                                 </h3>
+                                <div className="relative rounded-full pt-5 lg:pt-0">
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
+                                        <Icon
+                                            icon="solar:magnifer-linear"
+                                            className="text-white text-4xl inline-block"
+                                        />
+                                    </button>
+                                </div>
+                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                    </div>
+                                </div>
                             </div>
-                        </Slider>
-                        <div className="relative rounded-full pt-5 lg:pt-0">
-                            <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
-                            <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
-                                <Icon
-                                    icon="solar:magnifer-linear"
-                                    className="text-white text-4xl inline-block"
-                                />
-                            </button>
-                        </div>
-                        <div className='flex items-center justify-between pt-10 lg:pt-4'>
-                            <div className='flex gap-2'>
-                                <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
-                            </div>
-                            <div className='flex gap-2'>
-                                <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
-                            </div>
-                            <div className='flex gap-2'>
-                                <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                            <div className='col-span-6 flex justify-center'>
+                                <Image src={`${getImagePrefix()}images/banner/mahila.png`} alt="nothing" width={1000} height={805} />
                             </div>
                         </div>
                     </div>
-                    <div className='col-span-6 flex justify-center'>
-                        <Image src={`${getImagePrefix()}images/banner/mahila.png`} alt="nothing" width={1000} height={805} />
-                    </div>
-                </div>
+                </Slider>
             </div>
         </section >
     )

@@ -89,14 +89,14 @@ const Header: React.FC = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
-            <button
-              onClick={() => setIsSignInOpen(true)}
+            <a
+              href="https://app.edux.center"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/20 hover:text-primary transition"
             >
               Kirish
-            </button>
-
-        
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -134,15 +134,15 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} />
           ))}
 
-          <button
-            onClick={() => {
-              setIsSignInOpen(true);
-              setNavbarOpen(false);
-            }}
-            className="mt-4 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition"
+          <a
+            href="https://app.edux.center"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setNavbarOpen(false)}
+            className="mt-4 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition text-center block"
           >
             Kirish
-          </button>
+          </a>
 
           <button
             onClick={() => {

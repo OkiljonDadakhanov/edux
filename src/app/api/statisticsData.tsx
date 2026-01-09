@@ -39,7 +39,7 @@ export const grades = [
   "11-sinf"
 ];
 
-export const topCounts = [10, 20, 50, 100, "Barcha"];
+export const topCounts = [10, 20, 30, 50, 100, "Barcha"];
 
 // Regions ranking data
 export interface RegionRanking {
