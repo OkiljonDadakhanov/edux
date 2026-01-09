@@ -23,7 +23,7 @@ export default function LessonsPage() {
     <main className="pt-24 min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container mx-auto max-w-screen-2xl px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-10">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tahliliy darslar
           </h1>
