@@ -93,9 +93,18 @@ const Header: React.FC = () => {
               href="https://app.edux.center"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/20 hover:text-primary transition"
+              className="border border-primary text-primary px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary hover:text-white transition"
             >
               Kirish
+            </a>
+            <a
+              href="https://t.me/eduxolimpbot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/90 transition flex items-center gap-2"
+            >
+              <Icon icon="mdi:telegram" className="text-lg" />
+              Ro'yhatdan o'tish
             </a>
           </div>
 
@@ -144,15 +153,16 @@ const Header: React.FC = () => {
             Kirish
           </a>
 
-          <button
-            onClick={() => {
-              setIsSignUpOpen(true);
-              setNavbarOpen(false);
-            }}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition"
+          <a
+            href="https://t.me/eduxolimpbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setNavbarOpen(false)}
+            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition flex items-center justify-center gap-2"
           >
-            Ro'yxatdan o'tish
-          </button>
+            <Icon icon="mdi:telegram" className="text-lg" />
+            Ro'yhatdan o'tish
+          </a>
         </nav>
       </div>
 
