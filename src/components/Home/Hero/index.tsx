@@ -99,15 +99,15 @@ const Hero = () => {
                                 <div className='flex items-center justify-between pt-10 lg:pt-4'>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
                                     </div>
                                 </div>
                             </div>
@@ -183,15 +183,15 @@ const Hero = () => {
                                 <div className='flex items-center justify-between pt-10 lg:pt-4'>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
                                     </div>
                                 </div>
                             </div>
@@ -232,15 +232,15 @@ const Hero = () => {
                                 <div className='flex items-center justify-between pt-10 lg:pt-4'>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Moslashuvchan ta'lim</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Hamjamiyat</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
                                     </div>
                                 </div>
                             </div>
