@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "@/components/Home/Hero";
 import Courses from "@/components/Home/Courses";
 import Mentor from "@/components/Home/Mentor";
-import Testimonial from "@/components/Home/Testimonials";
+// import Testimonial from "@/components/Home/Testimonials";
 import Newsletter from "@/components/Home/Newsletter";
 import Stat from "@/components/Stat/index";
 import { Metadata } from "next";
@@ -18,7 +18,7 @@ export default function Home() {
       <Stat />
       <Courses />
       
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Mentor />
       <Newsletter />
     </main>
