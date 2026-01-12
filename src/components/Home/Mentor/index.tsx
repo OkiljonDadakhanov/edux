@@ -14,8 +14,8 @@ interface Mentor {
 const mentorsBySubject: Record<string, Mentor[]> = {
   Matematika: [
     { name: "Abbos Muhammedov", imgSrc: "images/mentors/matematika/Abbos.webp", subject: "Matematika" },
-    { name: "Abdulla Ahadov", imgSrc: "images/mentors/matematika/Abdulla.webp", subject: "Matematika" },
-    { name: "Abdushukur Ismatov", imgSrc: "images/mentors/matematika/Abdushukur.webp", subject: "Matematika" },
+    { name: "Abdulla Ismatov", imgSrc: "images/mentors/matematika/Abdulla.webp", subject: "Matematika" },
+    { name: "Abdushukur Ahadov", imgSrc: "images/mentors/matematika/Abdushukur.webp", subject: "Matematika" },
   ],
   Informatika: [
     { name: "Davron Avlakulov", imgSrc: "images/mentors/informatika/Davron.webp", subject: "Informatika" },
