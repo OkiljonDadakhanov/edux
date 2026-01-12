@@ -100,3 +100,19 @@ table tbody tr:hover {
 .mentor-card {
   animation: fadeInUp 0.5s ease-out both;
 }
+
+/* Dropdown Animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlide 0.2s ease-out;
+}

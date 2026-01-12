@@ -15,7 +15,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       {/* MAIN LINK */}
       <Link
         href={item.href}
-        className="flex items-center gap-2 px-3 py-2 text-sm lg:text-sm xl:text-base text-gray-700 hover:text-black hover:bg-gray-100 rounded-full transition-colors duration-200 whitespace-nowrap"
+        className="flex items-center gap-1.5 px-4 py-2.5 text-sm xl:text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200 whitespace-nowrap"
       >
         {item.label}
 

@@ -8,6 +8,7 @@ import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
 import OlimpiadalarDropdown from "./Navigation/OlimpiadalarDropdown";
+import EduXDropdown from "./Navigation/EduXDropdown";
 import Signin from "@/components/Auth/SignIn";
 import { Icon } from "@iconify/react";
 
@@ -51,8 +52,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white ${
-        sticky ? "shadow-lg" : ""
+      className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white border-b border-gray-100 ${
+        sticky ? "shadow-md" : "shadow-sm"
       }`}
     >
       {/* Top notice bar */}
@@ -67,28 +68,35 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto max-w-screen-2xl px-4 py-3 sm:py-4">
-        <div className="flex items-center justify-between gap-6">
-          {/* Logo */}
-          <Logo />
+      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo - Left Side */}
+          <div className="flex-shrink-0 flex items-center">
+            <Logo />
+          </div>
 
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex flex-1 items-center justify-center gap-6 xl:gap-8 flex-nowrap">
-            {headerData.map((item, index) => {
-              if (item.label === "Olimpiadalar") {
-                return <OlimpiadalarDropdown key={index} />;
-              }
-              return <HeaderLink key={index} item={item} />;
-            })}
+          {/* Desktop Menu - Center */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
+            <div className="flex items-center gap-1 xl:gap-2">
+              {headerData.map((item, index) => {
+                if (item.label === "Olimpiadalar") {
+                  return <OlimpiadalarDropdown key={index} />;
+                }
+                if (item.label === "EduX") {
+                  return <EduXDropdown key={index} />;
+                }
+                return <HeaderLink key={index} item={item} />;
+              })}
+            </div>
           </nav>
 
-          {/* Desktop Auth Buttons */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
+          {/* Desktop Auth Buttons - Right Side */}
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <a
               href="https://app.edux.center"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-primary text-primary px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary hover:text-white transition"
+              className="border-2 border-primary text-primary px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
             >
               Kirish
             </a>
@@ -96,7 +104,7 @@ const Header: React.FC = () => {
               href="https://t.me/eduxolimpbot"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/90 transition flex items-center gap-2"
+              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-200 flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg"
             >
               <Icon icon="mdi:telegram" className="text-lg" />
               Ro'yhatdan o'tish
@@ -106,9 +114,10 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setNavbarOpen(true)}
-            className="lg:hidden p-2 rounded-md bg-primary"
+            className="lg:hidden p-2.5 rounded-lg bg-primary hover:bg-primary/90 transition-colors flex-shrink-0"
+            aria-label="Open menu"
           >
-            <Icon icon="mdi:menu" color="#fff" width="28" />
+            <Icon icon="mdi:menu" color="#fff" width="24" height="24" />
           </button>
         </div>
       </div>
