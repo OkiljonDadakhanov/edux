@@ -17,10 +17,8 @@ const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
   const signInRef = useRef<HTMLDivElement>(null);
-  const signUpRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => setSticky(window.scrollY >= 80);
@@ -28,9 +26,6 @@ const Header: React.FC = () => {
   const handleClickOutside = (event: MouseEvent) => {
     if (signInRef.current && !signInRef.current.contains(event.target as Node))
       setIsSignInOpen(false);
-
-    if (signUpRef.current && !signUpRef.current.contains(event.target as Node))
-      setIsSignUpOpen(false);
 
     if (
       mobileMenuRef.current &&
@@ -51,8 +46,8 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     document.body.style.overflow =
-      isSignInOpen || isSignUpOpen || navbarOpen ? "hidden" : "";
-  }, [isSignInOpen, isSignUpOpen, navbarOpen]);
+      isSignInOpen || navbarOpen ? "hidden" : "";
+  }, [isSignInOpen, navbarOpen]);
 
   return (
     <header
@@ -93,9 +88,18 @@ const Header: React.FC = () => {
               href="https://app.edux.center"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/20 hover:text-primary transition"
+              className="border border-primary text-primary px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary hover:text-white transition"
             >
               Kirish
+            </a>
+            <a
+              href="https://t.me/eduxolimpbot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm lg:text-base font-medium hover:bg-primary/90 transition flex items-center gap-2"
+            >
+              <Icon icon="mdi:telegram" className="text-lg" />
+              Ro'yhatdan o'tish
             </a>
           </div>
 
@@ -144,15 +148,16 @@ const Header: React.FC = () => {
             Kirish
           </a>
 
-          <button
-            onClick={() => {
-              setIsSignUpOpen(true);
-              setNavbarOpen(false);
-            }}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition"
+          <a
+            href="https://t.me/eduxolimpbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setNavbarOpen(false)}
+            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition flex items-center justify-center gap-2"
           >
-            Ro'yxatdan o'tish
-          </button>
+            <Icon icon="mdi:telegram" className="text-lg" />
+            Ro'yhatdan o'tish
+          </a>
         </nav>
       </div>
 
@@ -174,22 +179,6 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      {/* Sign Up Modal */}
-      {isSignUpOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div
-            ref={signUpRef}
-            className="relative w-full max-w-md bg-white rounded-xl p-8"
-          >
-            <button
-              onClick={() => setIsSignUpOpen(false)}
-              className="absolute top-3 right-3"
-            >
-              <Icon icon="mdi:close" width="26" />
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
