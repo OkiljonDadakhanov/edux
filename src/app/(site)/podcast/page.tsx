@@ -78,6 +78,42 @@ Ushbu sonda biz:
     youtubeUrl: "https://youtu.be/2kKLI-wlSZo?si=dmmQei-5d4Yt65cq",
     youtubeId: "2kKLI-wlSZo",
     hashtags: ["#EduX_podkast", "#2_son"]
+  },
+  {
+    id: 3,
+    episodeNumber: 3,
+    title: "EduX | 3-son — OLIMPIADACHILARNING O'ZLARI BILAN!",
+    description: `⚡️G'alaba ortidagi haqiqiy yo'l, real tajriba va samimiy hikoyalar
+
+Bu galgi mehmonlarimiz — ilmni o'rganibgina qolmay, uni amaliyotda qo'llab muvaffaqiyatga erishgan ZAMONAMIZ QAHRAMONLARI.
+
+📌Bu shunchaki suhbat emas — bu bilim sari bir qadam!`,
+    guests: [
+      {
+        name: "Daler Rahimov",
+        title: "Olimpiadachi",
+        achievements: [
+          "Xalqaro kimyo olimpiadasida (IChO 2024 - 2025) ikki karra oltin medal sovrindori"
+        ]
+      },
+      {
+        name: "Elbek Zohidjonov",
+        title: "Olimpiadachi",
+        achievements: [
+          "Xalqaro matematika olimpiadasida (IMO 2024-2025) ikki karra kumush medal sovrindori"
+        ]
+      },
+      {
+        name: "Elbek Uroqov",
+        title: "Olimpiadachi",
+        achievements: [
+          "Xalqaro Fizika olimpiadasining bronza medal sohibi"
+        ]
+      }
+    ],
+    youtubeUrl: "https://www.youtube.com/watch?v=7MQyOQ7y0GI&feature=youtu.be",
+    youtubeId: "7MQyOQ7y0GI",
+    hashtags: ["#EduX_podkast", "#3_son"]
   }
 ];
 
@@ -107,7 +143,7 @@ export default function PodcastPage() {
         </div>
 
         {/* Episodes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {podcastEpisodes.map((episode) => (
             <div
               key={episode.id}
@@ -134,28 +170,39 @@ export default function PodcastPage() {
               {/* Episode Content */}
               <div className="p-6">
                 {/* YouTube Thumbnail Preview */}
-                <a
-                  href={episode.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative w-full mb-6 rounded-xl overflow-hidden cursor-pointer group/thumb block"
-                >
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <Image
-                      src={getYouTubeThumbnail(episode.youtubeId)}
-                      alt={episode.title}
-                      fill
-                      className="object-cover group-hover/thumb:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/20 transition-colors"></div>
+                {episode.youtubeId ? (
+                  <a
+                    href={episode.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative w-full mb-6 rounded-xl overflow-hidden cursor-pointer group/thumb block"
+                  >
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <Image
+                        src={getYouTubeThumbnail(episode.youtubeId)}
+                        alt={episode.title}
+                        fill
+                        className="object-cover group-hover/thumb:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/20 transition-colors"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-red-600 rounded-full p-4 group-hover/thumb:scale-110 transition-transform shadow-2xl">
+                          <Icon icon="solar:play-circle-bold" className="text-white text-5xl" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div className="relative w-full mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10" style={{ paddingBottom: '56.25%' }}>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-red-600 rounded-full p-4 group-hover/thumb:scale-110 transition-transform shadow-2xl">
-                        <Icon icon="solar:play-circle-bold" className="text-white text-5xl" />
+                      <div className="text-center p-6">
+                        <Icon icon="solar:podcast-bold" className="text-6xl text-primary/50 mx-auto mb-4" />
+                        <p className="text-gray-600 font-medium">Tez orada efirga uzatiladi</p>
                       </div>
                     </div>
                   </div>
-                </a>
+                )}
 
                 {/* Description */}
                 <div className="mb-6">
@@ -206,19 +253,72 @@ export default function PodcastPage() {
                 </div>
 
                 {/* Watch Button */}
-                <a
-                  href={episode.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors group/btn"
-                >
-                  <Icon icon="solar:youtube-bold" className="text-2xl" />
-                  YouTube'da tomosha qiling
-                  <Icon icon="solar:arrow-right-bold" className="text-lg group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+                {episode.youtubeId ? (
+                  <a
+                    href={episode.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors group/btn"
+                  >
+                    <Icon icon="solar:youtube-bold" className="text-2xl" />
+                    YouTube'da tomosha qiling
+                    <Icon icon="solar:arrow-right-bold" className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                ) : (
+                  <div className="w-full inline-flex items-center justify-center gap-2 bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-60">
+                    <Icon icon="solar:clock-circle-bold" className="text-2xl" />
+                    Tez orada mavjud bo'ladi
+                  </div>
+                )}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Social Media Links */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Kuzatib boring</h3>
+            <p className="text-gray-600 mb-6">Bizni ijtimoiy tarmoqlarda kuzatib boring va yangiliklar haqida xabardor bo'ling</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://t.me/eduxolimpbot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+              >
+                <Icon icon="mdi:telegram" className="text-2xl" />
+                Telegram
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-colors"
+              >
+                <Icon icon="mdi:instagram" className="text-2xl" />
+                Instagram
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+              >
+                <Icon icon="mdi:facebook" className="text-2xl" />
+                Facebook
+              </a>
+              <a
+                href="https://www.youtube.com/@edux"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+              >
+                <Icon icon="mdi:youtube" className="text-2xl" />
+                YouTube
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </main>

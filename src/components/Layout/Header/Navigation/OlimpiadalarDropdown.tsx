@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 
 const subjects = [
-  { id: 1, name: "Matematika", grades: ["7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
+  { id: 1, name: "Matematika", grades: ["4-sinf", "5-sinf", "6-sinf", "7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
   { id: 2, name: "Fizika", grades: ["7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
   { id: 3, name: "Kimyo", grades: ["7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
   { id: 4, name: "Biologiya", grades: ["7-sinf", "8-sinf", "9-sinf", "10-sinf", "11-sinf"] },
@@ -114,18 +114,28 @@ const OlimpiadalarDropdown = () => {
                       Sinflar
                     </h3>
                   </div>
-                  <div className="p-4 grid grid-cols-2 gap-2">
-                    {subjects
-                      .find((s) => s.id === selectedSubject)
-                      ?.grades.map((grade, idx) => (
-                        <Link
-                          key={idx}
-                          href="/#courses"
-                          className="px-4 py-3 text-center rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 font-medium text-gray-700"
-                        >
-                          {grade}
-                        </Link>
-                      ))}
+                  <div className="p-4">
+                    {/* Info note for grades 4-6 */}
+                    {selectedSubject === 1 && (
+                      <div className="mb-4 p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg">
+                        <p className="text-xs text-yellow-800 font-medium">
+                          ℹ️ 4, 5, 6-sinflar faqat matematika fanidan qatnashadi
+                        </p>
+                      </div>
+                    )}
+                    <div className="grid grid-cols-2 gap-2">
+                      {subjects
+                        .find((s) => s.id === selectedSubject)
+                        ?.grades.map((grade, idx) => (
+                          <Link
+                            key={idx}
+                            href="/#courses"
+                            className="px-4 py-3 text-center rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 font-medium text-gray-700"
+                          >
+                            {grade}
+                          </Link>
+                        ))}
+                    </div>
                   </div>
                 </>
               ) : (
