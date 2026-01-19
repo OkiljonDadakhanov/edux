@@ -25,6 +25,13 @@ const eduxItems = [
     icon: "solar:users-group-two-rounded-bold",
     description: "Malakali mentorlar bilan tanishing"
   },
+  { 
+    id: 4, 
+    name: "Podkast", 
+    href: "/podcast",
+    icon: "solar:podcast-bold",
+    description: "Ta'lim va real tajriba — barchasi bir joyda"
+  },
 ];
 
 const EduXDropdown = () => {
