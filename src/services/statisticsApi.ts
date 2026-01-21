@@ -1,4 +1,4 @@
-const BASE_URL = 'https://app.edux.center/api/Stats';
+const BASE_URL = 'https://app.edux.center/Stats';
 
 export interface ApiRegionCount {
   regionId: number;
