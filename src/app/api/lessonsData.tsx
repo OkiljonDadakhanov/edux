@@ -10,6 +10,7 @@ export interface Lesson {
   youtubeId: string;
   imgSrc: string;
   description: string;
+  type?: 'tahliliy' | 'amaliy'; // Optional type field
 }
 
 // Extract YouTube ID from URL
@@ -39,7 +40,8 @@ export const lessonsData: Lesson[] = [
     youtubeUrl: "https://youtu.be/ZZS8hVWOREg?si=sWKC-8HVzPrZuLmS",
     youtubeId: getYouTubeId("https://youtu.be/ZZS8hVWOREg?si=sWKC-8HVzPrZuLmS"),
     imgSrc: "images/courses/math.jpg",
-    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli, chuqur va tahliliy darslarga start berildi."
+    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli, chuqur va tahliliy darslarga start berildi.",
+    type: 'tahliliy'
   },
   {
     id: 2,
@@ -55,7 +57,8 @@ export const lessonsData: Lesson[] = [
     youtubeUrl: "https://youtu.be/eGu3fdVTb6Y?si=J74hw1ZYUyI3MD8A",
     youtubeId: getYouTubeId("https://youtu.be/eGu3fdVTb6Y?si=J74hw1ZYUyI3MD8A"),
     imgSrc: "images/courses/fizika.jpeg",
-    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar oʻtkazilmoqda."
+    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar oʻtkazilmoqda.",
+    type: 'tahliliy'
   },
   {
     id: 3,
@@ -71,7 +74,8 @@ export const lessonsData: Lesson[] = [
     youtubeUrl: "https://youtu.be/LpcBnSVPew8?si=dh4dTXafyJ-1sKpX",
     youtubeId: getYouTubeId("https://youtu.be/LpcBnSVPew8?si=dh4dTXafyJ-1sKpX"),
     imgSrc: "images/courses/biology.jpg",
-    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar oʻtkazilmoqda."
+    description: "EduX loyihasi doirasida fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar oʻtkazilmoqda.",
+    type: 'tahliliy'
   },
   {
     id: 4,
@@ -88,7 +92,8 @@ export const lessonsData: Lesson[] = [
     youtubeUrl: "https://youtu.be/h7MD2U25qMc?si=aj36Lgwvl-WiH9oI",
     youtubeId: getYouTubeId("https://youtu.be/h7MD2U25qMc?si=aj36Lgwvl-WiH9oI"),
     imgSrc: "images/courses/coursethree.png",
-    description: "EduX loyihasi doirasida navbatdagi tahliliy dars informatika va axborot texnologiyalari fanidan bo'lib, ekspert sifatida Davron Avlakulov ishtirokida tashkil etiladi."
+    description: "EduX loyihasi doirasida navbatdagi tahliliy dars informatika va axborot texnologiyalari fanidan bo'lib, ekspert sifatida Davron Avlakulov ishtirokida tashkil etiladi.",
+    type: 'tahliliy'
   },
   {
     id: 5,
@@ -106,7 +111,8 @@ export const lessonsData: Lesson[] = [
     youtubeUrl: "https://youtu.be/ppIb6nVj4Fs?si=pWJo6xz9wg6XYZzf",
     youtubeId: getYouTubeId("https://youtu.be/ppIb6nVj4Fs?si=pWJo6xz9wg6XYZzf"),
     imgSrc: "images/courses/chemistry.jpg",
-    description: "EduX loyihasi doirasida navbatdagi tahliliy dars kimyo fanidan bo'lib, ekspert sifatida Firdavs Sobirov ishtirokida tashkil etiladi."
+    description: "EduX loyihasi doirasida navbatdagi tahliliy dars kimyo fanidan bo'lib, ekspert sifatida Firdavs Sobirov ishtirokida tashkil etiladi.",
+    type: 'tahliliy'
   }
 ];
 

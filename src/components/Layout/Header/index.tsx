@@ -107,7 +107,7 @@ const Header: React.FC = () => {
               className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-200 flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg"
             >
               <Icon icon="mdi:telegram" className="text-lg" />
-              Ro'yhatdan o'tish
+              Ro'yxatdan o'tish
             </a>
           </div>
 
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
             className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition flex items-center justify-center gap-2"
           >
             <Icon icon="mdi:telegram" className="text-lg" />
-            Ro'yhatdan o'tish
+            Ro'yxatdan o'tish
           </a>
         </nav>
       </div>
