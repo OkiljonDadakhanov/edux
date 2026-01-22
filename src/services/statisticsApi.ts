@@ -1,4 +1,4 @@
-const BASE_URL = 'https://app.edux.center/Stats';
+const BASE_URL = 'https://app.edux.center/api/stats';
 
 export interface ApiRegionCount {
   regionId: number;
@@ -29,7 +29,7 @@ export interface ApiOrganizationCount {
  */
 export async function getTotalUsersCount(): Promise<number> {
   try {
-    const response = await fetch(`${BASE_URL}/GetTotalUsersCount`, {
+    const response = await fetch(`${BASE_URL}/gettotaluserscount`, {
       headers: {
         'accept': 'application/json',
       },
@@ -63,7 +63,7 @@ export async function getUsersCountByRegion(
     }
     params.append('size', size.toString());
     
-    const response = await fetch(`${BASE_URL}/GetUsersCountByRegion?${params.toString()}`, {
+    const response = await fetch(`${BASE_URL}/getuserscountbyregion?${params.toString()}`, {
       headers: {
         'accept': 'application/json',
       },
@@ -102,7 +102,7 @@ export async function getUsersCountByDistrict(
     }
     params.append('size', size.toString());
     
-    const response = await fetch(`${BASE_URL}/GetUsersCountByDistrict?${params.toString()}`, {
+    const response = await fetch(`${BASE_URL}/getuserscountbydistrict?${params.toString()}`, {
       headers: {
         'accept': 'application/json',
       },
@@ -141,7 +141,7 @@ export async function getUsersCountByOrganization(
     }
     params.append('size', size.toString());
     
-    const response = await fetch(`${BASE_URL}/GetUsersCountByOrganization?${params.toString()}`, {
+    const response = await fetch(`${BASE_URL}/getuserscountbyorganization?${params.toString()}`, {
       headers: {
         'accept': 'application/json',
       },
