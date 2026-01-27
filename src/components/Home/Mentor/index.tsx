@@ -104,13 +104,23 @@ const mentorsBySubject: Record<string, Mentor[]> = {
         { text: "Biologiya fanidan mahalliy olimpiadalar gʻoliblarining ustozi", type: 'teacher' },
       ]
     },
-    { 
-      name: "Humoyun Yusupov", 
-      imgSrc: "images/mentors/biologiya/xumoyun.webp", 
+    {
+      name: "Humoyun Yusupov",
+      imgSrc: "images/mentors/biologiya/xumoyun.webp",
       subject: "Biologiya",
       achievements: [
         { text: "Mahalliy olimpiada gʻoliblarining ustozi", type: 'teacher' },
         { text: "Biologiya fanidan bir qancha Xalqaro tanlovlar g'olibi", type: 'other' },
+      ]
+    },
+    {
+      name: "Otabek Jo'rayev",
+      imgSrc: "images/mentors/biologiya/👤Otabek.HEIC",
+      subject: "Biologiya",
+      achievements: [
+        { text: "Biologiya fani bo'yicha uzoq yillik tajribaga ega", type: 'teacher' },
+        { text: "O'qituvchilar Respublika olimpiadasi sovrindori", type: 'other' },
+        { text: "Mahalliy olimpiada gʻoliblarining ustozi", type: 'teacher' },
       ]
     },
   ],
@@ -136,11 +146,32 @@ const mentorsBySubject: Record<string, Mentor[]> = {
         { text: "Mahalliy olimpiada gʻoliblarining ustozi", type: 'teacher' },
       ]
     },
-    { 
-      name: "Shaxzod Qo'chqorov", 
-      imgSrc: "images/mentors/kimyo/Shaxzod.webp", 
+    {
+      name: "Shaxzod Qo'chqorov",
+      imgSrc: "images/mentors/kimyo/Shaxzod.webp",
       subject: "Kimyo",
       achievements: []
+    },
+    {
+      name: "Doniyor Tohirov",
+      imgSrc: "images/mentors/kimyo/👤Doniyor.jpg",
+      subject: "Kimyo",
+      achievements: [
+        { text: "Fan olimpiadalari markazining \"Fan kengashi a'zosi\"", type: 'member' },
+        { text: "O'qituvchilar Respublika olimpiadasining ikki karra sovrindori", type: 'other' },
+        { text: "Mahalliy olimpiada gʻoliblarining ustozi", type: 'teacher' },
+      ]
+    },
+    {
+      name: "Elbek Toshpulatov",
+      imgSrc: "images/mentors/matematika/Elbek Toshpulatov.jpg",
+      subject: "Kimyo",
+      achievements: [
+        { text: "Fan olimpiadalari markazining \"Fan kengashi a'zosi\"", type: 'member' },
+        { text: "O'qituvchilar Respublika olimpiadasining sovrindori", type: 'other' },
+        { text: "Mahalliy olimpiada gʻoliblarining ustozi", type: 'teacher' },
+        { text: "Mintaqaviy xalqaro olimpiada gʻolibi", type: 'medal' },
+      ]
     },
   ],
   Fizika: [

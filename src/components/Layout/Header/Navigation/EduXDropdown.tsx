@@ -39,6 +39,14 @@ const eduxItems = [
   },
   {
     id: 3,
+    name: "Bizning jamoa",
+    href: "/#team",
+    icon: "solar:users-group-rounded-bold",
+    description: "Loyiha jamoasi bilan tanishing",
+    hasSubmenu: false
+  },
+  {
+    id: 4,
     name: "Mentorlar jamoasi",
     href: "/#mentor",
     icon: "solar:users-group-two-rounded-bold",
@@ -46,7 +54,7 @@ const eduxItems = [
     hasSubmenu: false
   },
   {
-    id: 4,
+    id: 5,
     name: "Podkast",
     href: "/podcast",
     icon: "solar:podcast-bold",

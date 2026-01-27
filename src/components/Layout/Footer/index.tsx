@@ -106,10 +106,10 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-10 lg:flex items-center justify-between">
           <h4 className="text-black/50 text-sm text-center lg:text-start font-normal">
-            ©2025 EduX. Barcha huquqlar himoyalangan
+            ©2026 EduX. Barcha huquqlar himoyalangan
           </h4>
 
-          <div className="flex gap-5 mt-5 lg:mt-0 justify-center lg:justify-start">
+          <div className="flex gap-5 mt-5 lg:mt-0 justify-center lg:justify-start items-center">
             <Link
               href="/"
               className="text-black/50 text-sm font-normal hover:text-primary"
@@ -122,6 +122,17 @@ const Footer = () => {
             >
               Foydalanish shartlari
             </Link>
+            <span className="text-black/30">|</span>
+            <span className="text-black/50 text-sm font-normal">
+              Developed by{" "}
+              <Link
+                href="https://technone.uz"
+                target="_blank"
+                className="text-primary hover:text-secondary font-medium transition-colors"
+              >
+                TechnOne
+              </Link>
+            </span>
           </div>
         </div>
       </div>

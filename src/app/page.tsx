@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "@/components/Home/Hero";
 import Courses from "@/components/Home/Courses";
 import Mentor from "@/components/Home/Mentor";
+import Team from "@/components/Home/Team";
 // import Testimonial from "@/components/Home/Testimonials";
 import Newsletter from "@/components/Home/Newsletter";
 import Stat from "@/components/Stat/index";
@@ -19,6 +20,7 @@ export default function Home() {
       <Courses />
       
       {/* <Testimonial /> */}
+      <Team />
       <Mentor />
       <Newsletter />
     </main>
