@@ -10,6 +10,12 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
+    name: "To'raboy Shermatov",
+    role: "Loyiha rahbari",
+    imgSrc: "/team/shermatov.jpg",
+    imgPosition: "center 15%",
+  },
+  {
     name: "Tursunboy Jumayev",
     role: "Loyiha kordinatori",
     imgSrc: "/team/tursunboy.JPG",
@@ -34,9 +40,21 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Tamanno To'rayeva",
-    role: "PR va media",
+    role: "PR va media boshlig'i",
     imgSrc: "/team/Tamanno.JPG",
     imgPosition: "center 20%",
+  },
+  {
+    name: "Charos Abdusattorova",
+    role: "Loyiha menejeri",
+    imgSrc: "/team/charos.jpg",
+    imgPosition: "center top",
+  },
+  {
+    name: "Sherzodbek Abdumutalov",
+    role: "Mutaxassis",
+    imgSrc: "/team/sherzod.JPG",
+    imgPosition: "center 15%",
   },
 ];
 
