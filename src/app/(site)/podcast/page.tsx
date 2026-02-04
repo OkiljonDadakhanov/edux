@@ -18,6 +18,8 @@ interface PodcastEpisode {
   guests: PodcastGuest[];
   youtubeUrl: string;
   youtubeId: string;
+  youtubeUrlEn?: string;
+  youtubeIdEn?: string;
   hashtags: string[];
 }
 
@@ -114,6 +116,35 @@ Bu galgi mehmonlarimiz — ilmni o'rganibgina qolmay, uni amaliyotda qo'llab muv
     youtubeUrl: "https://www.youtube.com/watch?v=7MQyOQ7y0GI&feature=youtu.be",
     youtubeId: "7MQyOQ7y0GI",
     hashtags: ["#EduX_podkast", "#3_son"]
+  },
+  {
+    id: 4,
+    episodeNumber: 4,
+    title: "XALQARO KIMYO OLIMPIADASI ORTIDAGI MASHAQQAT",
+    description: `⚡️ EduX podkastining 4-soni e'lon qilinmoqda. Ushbu sonda Xalqaro kimyo olimpiadasining boshqaruv va ilmiy jarayonlari, xalqaro hamkorlik va olimpiadaning global ahamiyati haqida so'z yuritiladi.
+
+📌Podkast davomida mehmonlar IChO'ning ilmiy mazmuni, tashkil etish jarayonlari va turli davlatlar o'rtasidagi hamkorlikning ahamiyati haqida qimmatli fikr va tajribalarini bo'lishadilar.`,
+    guests: [
+      {
+        name: "John Leon Kiappes",
+        title: "Xalqaro kimyo olimpiadasi (IChO) Boshqaruv qo'mitasi raisi",
+        achievements: [
+          "University College London professori"
+        ]
+      },
+      {
+        name: "Alexander Kirillovich Gladilin",
+        title: "IChO 2026 Ilmiy qo'mitasi hamraisi",
+        achievements: [
+          "M.V. Lomonosov nomidagi Moskva davlat universiteti professori"
+        ]
+      }
+    ],
+    youtubeUrl: "https://youtu.be/6qluV7Njy_I?si=LwmFm6FQiyO9qUz8",
+    youtubeId: "6qluV7Njy_I",
+    youtubeUrlEn: "https://youtu.be/7FXH-JJ4DFs?si=7HuPMRpmZuKQTIcU",
+    youtubeIdEn: "7FXH-JJ4DFs",
+    hashtags: ["#Podkast4", "#EduX_podkast"]
   }
 ];
 
@@ -143,11 +174,11 @@ export default function PodcastPage() {
         </div>
 
         {/* Episodes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 items-stretch">
           {podcastEpisodes.map((episode) => (
             <div
               key={episode.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group flex flex-col h-full"
             >
               {/* Episode Header */}
               <div className="bg-gradient-to-r from-primary to-secondary p-6 text-white">
@@ -168,7 +199,7 @@ export default function PodcastPage() {
               </div>
 
               {/* Episode Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 {/* YouTube Thumbnail Preview */}
                 {episode.youtubeId ? (
                   <a
@@ -206,7 +237,7 @@ export default function PodcastPage() {
 
                 {/* Description */}
                 <div className="mb-6">
-                  <p className="text-gray-700 whitespace-pre-line text-sm leading-relaxed">
+                  <p className="text-gray-700 whitespace-pre-line text-sm leading-relaxed line-clamp-6">
                     {episode.description}
                   </p>
                 </div>
@@ -254,18 +285,32 @@ export default function PodcastPage() {
 
                 {/* Watch Button */}
                 {episode.youtubeId ? (
-                  <a
-                    href={episode.youtubeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors group/btn"
-                  >
-                    <Icon icon="solar:youtube-bold" className="text-2xl" />
-                    YouTube'da tomosha qiling
-                    <Icon icon="solar:arrow-right-bold" className="text-lg group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
+                  <div className="space-y-2 mt-auto">
+                    <a
+                      href={episode.youtubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors group/btn"
+                    >
+                      <Icon icon="solar:youtube-bold" className="text-2xl" />
+                      {episode.youtubeIdEn ? "O'zbek tilida tomosha qiling" : "YouTube'da tomosha qiling"}
+                      <Icon icon="solar:arrow-right-bold" className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                    </a>
+                    {episode.youtubeUrlEn && (
+                      <a
+                        href={episode.youtubeUrlEn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors group/btn"
+                      >
+                        <Icon icon="solar:youtube-bold" className="text-2xl" />
+                        Ingliz tilida tomosha qiling
+                        <Icon icon="solar:arrow-right-bold" className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                      </a>
+                    )}
+                  </div>
                 ) : (
-                  <div className="w-full inline-flex items-center justify-center gap-2 bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-60">
+                  <div className="w-full inline-flex items-center justify-center gap-2 bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-60 mt-auto">
                     <Icon icon="solar:clock-circle-bold" className="text-2xl" />
                     Tez orada mavjud bo'ladi
                   </div>
@@ -282,7 +327,7 @@ export default function PodcastPage() {
             <p className="text-gray-600 mb-6">Bizni ijtimoiy tarmoqlarda kuzatib boring va yangiliklar haqida xabardor bo'ling</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://t.me/eduxolimpbot"
+                href="https://t.me/Fan_olimpiadalari_M"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
@@ -291,7 +336,7 @@ export default function PodcastPage() {
                 Telegram
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/fan_olimpiadalari_markazi?igsh=aTl1emd5Z3ludzUw&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-colors"
@@ -300,7 +345,7 @@ export default function PodcastPage() {
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/share/14NAmhu2D5/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold hover:bg-blue-800 transition-colors"
@@ -309,7 +354,7 @@ export default function PodcastPage() {
                 Facebook
               </a>
               <a
-                href="https://www.youtube.com/@edux"
+                href="http://bit.ly/olimpdep"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
