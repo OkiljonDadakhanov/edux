@@ -55,7 +55,7 @@ const Hero = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 10000,
         pauseOnHover: false,
         fade: true,
         cssEase: "linear",
@@ -74,6 +74,135 @@ const Hero = () => {
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
                 <Slider {...settings} className="hero-slider">
+                    {/* Slide 0: IOAI 2026 Announcement */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-5'>
+                                <div className='flex items-center gap-3 mx-auto lg:mx-0'>
+                                    <span className="relative flex h-3 w-3">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                    </span>
+                                    <p className='text-red-500 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
+                                        #IOAI_2026
+                                    </p>
+                                </div>
+                                <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
+                                    Xalqaro sun&apos;iy intellekt olimpiadasi — 2026
+                                </h1>
+                                <p className='text-black/70 text-lg'>
+                                    O&apos;zbekiston ilk bor <span className="font-semibold text-secondary">IOAI</span>da ishtirok etadi! Terma jamoaga kirish uchun 4 bosqichli saralashda qatnashing.
+                                </p>
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:users-group-rounded-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">8—10-sinf o&apos;quvchilari uchun</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:clipboard-check-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Faqat ro&apos;yxatdan o&apos;tganlar saralashda ishtirok etadi</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-green-500/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:check-circle-bold" className="text-green-500 text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Ishtirok etish — ixtiyoriy</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl"
+                                    >
+                                        <Icon icon="solar:pen-new-square-bold" className="text-xl" />
+                                        Ro&apos;yxatdan o&apos;tish
+                                    </a>
+                                    <a
+                                        href="https://youtu.be/kkeJPnYMnes?si=yKWDepokbGO_iWSQ"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 text-red-600 font-semibold px-8 py-4 rounded-full border-2 border-red-200 hover:border-red-400 hover:bg-red-50 transition-colors"
+                                    >
+                                        <Icon icon="solar:play-circle-bold" className="text-xl" />
+                                        Videoni ko&apos;rish
+                                    </a>
+                                </div>
+                                <div className='flex items-center justify-between pt-6 lg:pt-2'>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>4 bosqichli saralash</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Xalqaro olimpiada</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Sun&apos;iy intellekt</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='col-span-6 flex justify-center'>
+                                <div className="relative w-full max-w-md flex flex-col gap-4">
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+                                        <Image
+                                            src={`${getImagePrefix()}images/AI.jpg`}
+                                            alt="IOAI 2026 — Xalqaro sun'iy intellekt olimpiadasi"
+                                            width={600}
+                                            height={400}
+                                            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-lg">
+                                                YANGI
+                                            </span>
+                                        </div>
+                                        <a
+                                            href="https://youtu.be/kkeJPnYMnes?si=yKWDepokbGO_iWSQ"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="absolute inset-0 flex items-center justify-center"
+                                        >
+                                            <div className="bg-red-600 rounded-full p-5 hover:scale-110 transition-transform shadow-2xl">
+                                                <Icon icon="solar:play-bold" className="text-white text-4xl" />
+                                            </div>
+                                        </a>
+                                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <Icon icon="solar:brain-bold" className="text-white text-2xl" />
+                                                <span className="text-white font-bold text-lg">IOAI 2026</span>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                                                    8—10 sinf
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/80 backdrop-blur-sm text-white">
+                                                    Ro&apos;yxat ochiq
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3.5 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
+                                    >
+                                        <Icon icon="solar:arrow-right-bold" className="text-lg" />
+                                        Hoziroq ro&apos;yxatdan o&apos;ting
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Slide 1: Top 3 Students */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
