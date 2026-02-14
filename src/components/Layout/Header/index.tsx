@@ -9,6 +9,8 @@ import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
 import OlimpiadalarDropdown from "./Navigation/OlimpiadalarDropdown";
 import EduXDropdown from "./Navigation/EduXDropdown";
+import MobileOlimpiadalarDropdown from "./Navigation/MobileOlimpiadalarDropdown";
+import MobileEduXDropdown from "./Navigation/MobileEduXDropdown";
 import Signin from "@/components/Auth/SignIn";
 import { Icon } from "@iconify/react";
 
@@ -56,18 +58,6 @@ const Header: React.FC = () => {
         sticky ? "shadow-md" : "shadow-sm"
       }`}
     >
-      {/* Top notice bar */}
-      <div className="w-full bg-amber-50 border-b border-amber-200">
-        <div className="container mx-auto max-w-screen-2xl px-4">
-          <div className="flex items-center justify-center gap-2 py-2 text-xs sm:text-sm text-amber-800">
-            <Icon icon="solar:warning-triangle-bold" className="text-base sm:text-lg" />
-            <p className="font-medium text-center">
-              Platforma test rejimida bepul ishlamoqda!
-            </p>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo - Left Side */}
@@ -143,9 +133,15 @@ const Header: React.FC = () => {
         </div>
 
         <nav className="flex flex-col gap-4 p-5">
-          {headerData.map((item, index) => (
-            <MobileHeaderLink key={index} item={item} />
-          ))}
+          {headerData.map((item, index) => {
+            if (item.label === "Olimpiadalar") {
+              return <MobileOlimpiadalarDropdown key={index} />;
+            }
+            if (item.label === "EduX") {
+              return <MobileEduXDropdown key={index} />;
+            }
+            return <MobileHeaderLink key={index} item={item} />;
+          })}
 
           <a
             href="https://app.edux.center"
