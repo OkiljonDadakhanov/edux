@@ -203,7 +203,117 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 1: Top 3 Students */}
+                    {/* Slide 1: AKHU STEAM Olimpiadasi */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-5'>
+                                <div className='flex items-center gap-3 mx-auto lg:mx-0'>
+                                    <span className="relative flex h-3 w-3">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                                    </span>
+                                    <p className='text-yellow-600 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
+                                        Kutilmoqda
+                                    </p>
+                                </div>
+                                <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
+                                    AKHU STEAM Olimpiadasi — 2026
+                                </h1>
+                                <p className='text-black/70 text-lg'>
+                                    Al-Xorazmiy universiteti tomonidan 10-11 sinf maktab, akademik litsey va kasb-hunar texnikumlari o&apos;quvchilari uchun o&apos;tkazilayotgan olimpiada.
+                                </p>
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:users-group-rounded-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">10—11-sinf o&apos;quvchilari uchun</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:calendar-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Ro&apos;yxatdan o&apos;tish: 2026-yil 31-martga qadar</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:clock-circle-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Davomiyligi: 120 daqiqa</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl"
+                                    >
+                                        <Icon icon="solar:pen-new-square-bold" className="text-xl" />
+                                        Ro&apos;yxatdan o&apos;tish
+                                    </a>
+                                </div>
+                                <div className='flex items-center justify-between pt-6 lg:pt-2'>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Matematika</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Fizika</p>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Dasturlash</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='col-span-6 flex justify-center'>
+                                <div className="relative w-full max-w-md flex flex-col gap-4">
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+                                        <Image
+                                            src={`${getImagePrefix()}STEAM.png`}
+                                            alt="AKHU STEAM Olimpiadasi — 2026"
+                                            width={600}
+                                            height={400}
+                                            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-yellow-500 text-white shadow-lg">
+                                                KUTILMOQDA
+                                            </span>
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <Icon icon="solar:cup-star-bold" className="text-white text-2xl" />
+                                                <span className="text-white font-bold text-lg">AKHU STEAM 2026</span>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                                                    3 bosqich
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/80 backdrop-blur-sm text-white">
+                                                    Tez orada ochiladi
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3.5 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
+                                    >
+                                        <Icon icon="solar:arrow-right-bold" className="text-lg" />
+                                        Hoziroq ro&apos;yxatdan o&apos;ting
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Slide 2: Top 3 Students */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
@@ -273,7 +383,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 2: Today's Lessons */}
+                    {/* Slide 3: Today's Lessons */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
@@ -357,7 +467,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 3: Podcast */}
+                    {/* Slide 4: Podcast */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
@@ -442,7 +552,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 4: Tahliliy Dars */}
+                    {/* Slide 5: Tahliliy Dars */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
@@ -530,7 +640,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 5: Amaliy Dars */}
+                    {/* Slide 6: Amaliy Dars */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
