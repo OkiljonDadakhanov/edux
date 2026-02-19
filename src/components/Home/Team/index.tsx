@@ -17,7 +17,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Tursunboy Jumayev",
-    role: "Loyiha kordinatori",
+    role: "Loyiha koordinator",
     imgSrc: "/team/tursunboy.JPG",
     imgPosition: "center 20%",
   },
@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Shahnoza Karimova",
-    role: "Tahliliy darslar kordinatori",
+    role: "Tahliliy darslar koordinator",
     imgSrc: "/team/shahnoza.JPG",
     imgPosition: "center top",
   },
