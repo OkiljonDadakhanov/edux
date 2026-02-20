@@ -108,7 +108,7 @@ const Hero = () => {
                                             <Icon icon="solar:cup-star-bold" className="text-primary text-lg" />
                                         </div>
                                         <div>
-                                            <p className="text-gray-800 text-sm font-semibold">AKHU STEAM — Matematika, Fizika, Dasturlash</p>
+                                            <p className="text-gray-800 text-sm font-semibold">AKHU STEAM — Matematika, Fizika, Dasturlash, Kiberxavfsizlik</p>
                                             <p className="text-gray-500 text-xs">10—11-sinf • 31-martga qadar ro&apos;yxatdan o&apos;ting</p>
                                         </div>
                                     </div>
