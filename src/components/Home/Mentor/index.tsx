@@ -115,7 +115,7 @@ const mentorsBySubject: Record<string, Mentor[]> = {
     },
     {
       name: "Otabek Jo'rayev",
-      imgSrc: "images/mentors/biologiya/👤Otabek.HEIC",
+      imgSrc: "images/mentors/informatika/otabek.jpg",
       subject: "Biologiya",
       achievements: [
         { text: "Biologiya fani bo'yicha uzoq yillik tajribaga ega", type: 'teacher' },

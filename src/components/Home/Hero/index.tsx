@@ -74,41 +74,32 @@ const Hero = () => {
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
                 <Slider {...settings} className="hero-slider">
-                    {/* Slide 0: Olympiad Announcements (IOAI 2026 + AKHU STEM) */}
+                    {/* Slide 0: AKHU STEAM Olimpiadasi */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-5'>
                                 <div className='flex items-center gap-3 mx-auto lg:mx-0'>
                                     <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
                                     </span>
-                                    <p className='text-red-500 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
-                                        Olimpiadalar — 2026
+                                    <p className='text-yellow-600 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
+                                        Kutilmoqda
                                     </p>
                                 </div>
                                 <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
-                                    Xalqaro olimpiadalarda ishtirok eting!
+                                    AKHU STEAM Olimpiadasi — 2026
                                 </h1>
                                 <p className='text-black/70 text-lg'>
-                                    O&apos;zbekiston jamoasida o&apos;z o&apos;rningizni egallang — <span className="font-semibold text-secondary">IOAI</span> va <span className="font-semibold text-secondary">AKHU STEM</span> olimpiadalariga ro&apos;yxatdan o&apos;ting.
+                                    Al-Xorazmiy universiteti tomonidan 10—11-sinf o&apos;quvchilari uchun o&apos;tkaziladigan STEAM olimpiadasida ishtirok eting.
                                 </p>
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
-                                            <Icon icon="solar:brain-bold" className="text-primary text-lg" />
-                                        </div>
-                                        <div>
-                                            <p className="text-gray-800 text-sm font-semibold">IOAI 2026 — Sun&apos;iy intellekt</p>
-                                            <p className="text-gray-500 text-xs">8—10-sinf • 4 bosqichli saralash</p>
-                                        </div>
-                                    </div>
                                     <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
                                         <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
                                             <Icon icon="solar:cup-star-bold" className="text-primary text-lg" />
                                         </div>
                                         <div>
-                                            <p className="text-gray-800 text-sm font-semibold">AKHU STEM — Matematika, Fizika, Dasturlash, Kiberxavfsizlik</p>
+                                            <p className="text-gray-800 text-sm font-semibold">AKHU STEAM — Matematika, Fizika, Dasturlash, Kiberxavfsizlik</p>
                                             <p className="text-gray-500 text-xs">10—11-sinf • 31-martga qadar ro&apos;yxatdan o&apos;ting</p>
                                         </div>
                                     </div>
@@ -129,24 +120,15 @@ const Hero = () => {
                                         <Icon icon="solar:pen-new-square-bold" className="text-xl" />
                                         Ro&apos;yxatdan o&apos;tish
                                     </a>
-                                    <a
-                                        href="https://youtu.be/kkeJPnYMnes?si=yKWDepokbGO_iWSQ"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 text-red-600 font-semibold px-8 py-4 rounded-full border-2 border-red-200 hover:border-red-400 hover:bg-red-50 transition-colors"
-                                    >
-                                        <Icon icon="solar:play-circle-bold" className="text-xl" />
-                                        Videoni ko&apos;rish
-                                    </a>
                                 </div>
                                 <div className='flex items-center justify-between pt-6 lg:pt-2'>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Sun&apos;iy intellekt</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Matematika</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Xalqaro olimpiada</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Fizika</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
@@ -169,51 +151,11 @@ const Hero = () => {
                             </div>
                             <div className='col-span-6 flex justify-center'>
                                 <div className="relative w-full max-w-md flex flex-col gap-4">
-                                    {/* IOAI 2026 Card */}
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
-                                        <Image
-                                            src={`${getImagePrefix()}images/AI.jpg`}
-                                            alt="IOAI 2026 — Xalqaro sun'iy intellekt olimpiadasi"
-                                            width={600}
-                                            height={400}
-                                            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
-                                        <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-red-500 text-white shadow-lg">
-                                                YANGI
-                                            </span>
-                                        </div>
-                                        <a
-                                            href="https://youtu.be/kkeJPnYMnes?si=yKWDepokbGO_iWSQ"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="absolute inset-0 flex items-center justify-center"
-                                        >
-                                            <div className="bg-red-600 rounded-full p-4 hover:scale-110 transition-transform shadow-2xl">
-                                                <Icon icon="solar:play-bold" className="text-white text-2xl" />
-                                            </div>
-                                        </a>
-                                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <Icon icon="solar:brain-bold" className="text-white text-xl" />
-                                                <span className="text-white font-bold text-sm">IOAI 2026</span>
-                                            </div>
-                                            <div className="flex flex-wrap items-center gap-2">
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
-                                                    8—10 sinf
-                                                </span>
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/80 backdrop-blur-sm text-white">
-                                                    Ro&apos;yxat ochiq
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* AKHU STEM Card */}
+                                    {/* AKHU STEAM Card */}
                                     <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
                                         <Image
                                             src={`${getImagePrefix()}STEM.png`}
-                                            alt="AKHU STEM Olimpiadasi — 2026"
+                                            alt="AKHU STEAM Olimpiadasi — 2026"
                                             width={600}
                                             height={400}
                                             className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
@@ -227,7 +169,7 @@ const Hero = () => {
                                         <div className="absolute bottom-0 left-0 right-0 p-4">
                                             <div className="flex items-center gap-2 mb-2">
                                                 <Icon icon="solar:cup-star-bold" className="text-white text-xl" />
-                                                <span className="text-white font-bold text-sm">AKHU STEM 2026</span>
+                                                <span className="text-white font-bold text-sm">AKHU STEAM 2026</span>
                                             </div>
                                             <div className="flex flex-wrap items-center gap-2">
                                                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
