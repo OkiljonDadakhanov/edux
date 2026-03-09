@@ -73,7 +73,7 @@ const mentorsBySubject: Record<string, Mentor[]> = {
     },
     { 
       name: "Otabek Aralov", 
-      imgSrc: "images/mentors/informatika/Mansurjon.webp", 
+      imgSrc: "images/mentors/informatika/otabek.jpg", 
       subject: "Informatika",
       achievements: [
         { text: "Uzoq yillik samarali tajribaga ega pedagog", type: 'teacher' },
