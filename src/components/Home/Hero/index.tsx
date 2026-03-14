@@ -74,110 +74,139 @@ const Hero = () => {
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
                 <Slider {...settings} className="hero-slider">
-                    {/* Slide 0: AKHU STEAM Olimpiadasi */}
+                    {/* Slide 0: Olimpiadalar — AKHU STEAM, Bebras, Moliyaviy savodxonlik */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-5'>
+                            <div className='col-span-6 flex flex-col gap-4'>
                                 <div className='flex items-center gap-3 mx-auto lg:mx-0'>
                                     <span className="relative flex h-3 w-3">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
                                     </span>
                                     <p className='text-yellow-600 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
-                                        Kutilmoqda
+                                        Olimpiadalar — 2026
                                     </p>
                                 </div>
-                                <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
-                                    AKHU STEAM Olimpiadasi — 2026
+                                <h1 className='text-midnight_text text-2xl sm:text-4xl font-bold pt-1 lg:pt-0 leading-tight'>
+                                    Olimpiadalarda ishtirok eting
                                 </h1>
-                                <p className='text-black/70 text-lg'>
-                                    Al-Xorazmiy universiteti tomonidan 10—11-sinf o&apos;quvchilari uchun o&apos;tkaziladigan STEAM olimpiadasida ishtirok eting.
+                                <p className='text-black/70 text-base'>
+                                    Ro&apos;yxatdan o&apos;ting va o&apos;z bilimingizni sinab ko&apos;ring.
                                 </p>
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
-                                            <Icon icon="solar:cup-star-bold" className="text-primary text-lg" />
+                                <div className="space-y-2 max-h-[280px] overflow-y-auto pr-1">
+                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                                            <Icon icon="solar:cup-star-bold" className="text-primary text-sm" />
                                         </div>
-                                        <div>
+                                        <div className="min-w-0">
                                             <p className="text-gray-800 text-sm font-semibold">AKHU STEAM — Matematika, Fizika, Dasturlash, Kiberxavfsizlik</p>
                                             <p className="text-gray-500 text-xs">10—11-sinf • 31-martga qadar ro&apos;yxatdan o&apos;ting</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-9 h-9 bg-green-500/10 rounded-full flex items-center justify-center">
-                                            <Icon icon="solar:check-circle-bold" className="text-green-500 text-lg" />
+                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                                            <Icon icon="solar:code-bold" className="text-primary text-sm" />
                                         </div>
-                                        <p className="text-gray-800 text-sm font-medium">Ishtirok etish — ixtiyoriy va bepul</p>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-800 text-sm font-semibold">Bebras olimpiadasi — Informatika</p>
+                                            <p className="text-gray-500 text-xs">3—11-sinf • onlayn • 10 topshiriq, 30 daqiqa • sertifikat. Ro&apos;yxatdan o&apos;tish 10-aprelgacha</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                                            <Icon icon="solar:wallet-money-bold" className="text-primary text-sm" />
+                                        </div>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-800 text-sm font-semibold">Moliyaviy savodxonlik olimpiadasi</p>
+                                            <p className="text-gray-500 text-xs">8—10-sinf • moliyaviy huquqbuzarlik va yashirin iqtisodiyot. Ro&apos;yxatdan o&apos;tish 31-martgacha</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                <div className="flex flex-col sm:flex-row gap-2 pt-1">
                                     <a
                                         href="https://t.me/eduxolimpbot"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl"
+                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl text-sm"
                                     >
-                                        <Icon icon="solar:pen-new-square-bold" className="text-xl" />
+                                        <Icon icon="solar:pen-new-square-bold" className="text-lg" />
                                         Ro&apos;yxatdan o&apos;tish
                                     </a>
                                 </div>
-                                <div className='flex items-center justify-between pt-6 lg:pt-2'>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Matematika</p>
+                                <div className='flex flex-wrap items-center gap-x-4 gap-y-1 pt-2'>
+                                    <div className='flex gap-1.5 items-center'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
+                                        <p className='text-xs sm:text-sm font-normal text-black'>Bebras</p>
                                     </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Fizika</p>
+                                    <div className='flex gap-1.5 items-center'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
+                                        <p className='text-xs sm:text-sm font-normal text-black'>Moliyaviy savodxonlik</p>
                                     </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>STEM fanlar</p>
+                                    <div className='flex gap-1.5 items-center'>
+                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
+                                        <p className='text-xs sm:text-sm font-normal text-black'>AKHU STEAM</p>
                                     </div>
-                                    <div className='flex gap-2'>
-  <Image
-    src={`${getImagePrefix()}images/banner/check-circle.svg`}
-    alt="check-image"
-    width={30}
-    height={30}
-    className='smallImage'
-  />
-  <p className='text-sm sm:text-lg font-normal text-black'>
-    Dasturlash / Kiberxavfsizlik
-  </p>
-</div>
-
                                 </div>
                             </div>
                             <div className='col-span-6 flex justify-center'>
-                                <div className="relative w-full max-w-md flex flex-col gap-4">
+                                <div className="relative w-full max-w-md flex flex-col gap-3">
                                     {/* AKHU STEAM Card */}
-                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+                                    <div className="relative rounded-2xl overflow-hidden shadow-xl group flex-shrink-0">
                                         <Image
                                             src={`${getImagePrefix()}STEM.png`}
                                             alt="AKHU STEAM Olimpiadasi — 2026"
                                             width={600}
-                                            height={400}
-                                            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                                            height={180}
+                                            className="w-full h-32 sm:h-36 object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
-                                        <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-yellow-500 text-white shadow-lg">
-                                                KUTILMOQDA
-                                            </span>
+                                        <div className="absolute top-2 left-2">
+                                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-yellow-500 text-white shadow">KUTILMOQDA</span>
                                         </div>
-                                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <Icon icon="solar:cup-star-bold" className="text-white text-xl" />
-                                                <span className="text-white font-bold text-sm">AKHU STEAM 2026</span>
+                                        <div className="absolute bottom-0 left-0 right-0 p-3">
+                                            <span className="text-white font-bold text-sm">AKHU STEAM 2026</span>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white">10—11 sinf</span>
                                             </div>
-                                            <div className="flex flex-wrap items-center gap-2">
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
-                                                    10—11 sinf
-                                                </span>
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-500/80 backdrop-blur-sm text-white">
-                                                    Tez orada ochiladi
-                                                </span>
+                                        </div>
+                                    </div>
+                                    {/* Bebras Card */}
+                                    <div className="relative rounded-2xl overflow-hidden shadow-xl group flex-shrink-0">
+                                        <Image
+                                            src={`${getImagePrefix()}Bebras.jpg`}
+                                            alt="Bebras olimpiadasi — Informatika"
+                                            width={600}
+                                            height={180}
+                                            className="w-full h-32 sm:h-36 object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent"></div>
+                                        <div className="absolute top-2 left-2">
+                                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-500 text-white shadow">ONLAYN</span>
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 right-0 p-3">
+                                            <span className="text-white font-bold text-sm">Bebras — 3—11 sinf</span>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white">10-aprelgacha</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* Moliyaviy savodxonlik Card */}
+                                    <div className="relative rounded-2xl overflow-hidden shadow-xl group flex-shrink-0">
+                                        <Image
+                                            src={`${getImagePrefix()}Moliyaviy.jpg`}
+                                            alt="Moliyaviy savodxonlik olimpiadasi"
+                                            width={600}
+                                            height={180}
+                                            className="w-full h-32 sm:h-36 object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
+                                        <div className="absolute top-2 left-2">
+                                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white shadow">8—10 SINF</span>
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 right-0 p-3">
+                                            <span className="text-white font-bold text-sm">Moliyaviy savodxonlik</span>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white">31-martgacha</span>
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +214,7 @@ const Hero = () => {
                                         href="https://t.me/eduxolimpbot"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3.5 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
+                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
                                     >
                                         <Icon icon="solar:arrow-right-bold" className="text-lg" />
                                         Hoziroq ro&apos;yxatdan o&apos;ting
