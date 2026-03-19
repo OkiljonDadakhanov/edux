@@ -224,48 +224,45 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 1: “Muhandis-ixtirochilik” olimpiadasi */}
+                    {/* Slide 1: Muhandislik-ixtirochilik — Yashil energetika */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-5'>
                                 <div className='flex items-center gap-3 mx-auto lg:mx-0'>
                                     <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                                     </span>
-                                    <p className='text-indigo-700 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
+                                    <p className='text-emerald-700 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
                                         Olimpiada — 2026
                                     </p>
                                 </div>
 
                                 <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
-                                    “Muhandis-ixtirochilik” olimpiadasi
+                                    “Muhandislik-ixtirochilik” olimpiadasi
                                 </h1>
 
                                 <p className='text-black/70 text-lg'>
-                                    11-sinf hamda o‘rta maxsus va kasbiy ta’lim tashkilotlarining 2-bosqich o‘quvchilari uchun.
-                                    Kelajak muhandislari va ixtirochilarini aniqlash hamda iqtidorini qo‘llab-quvvatlash maqsadida tashkil etilmoqda.
+                                    11-sinf hamda o‘rta maxsus va kasbiy ta’lim tashkilotlarining 2-bosqich o‘quvchilari diqqatiga!
+                                    Kelajak muhandislari va ixtirochilarini aniqlash hamda ularning iqtidorini qo‘llab-quvvatlash maqsadida tashkil etilmoqda.
                                 </p>
 
                                 <div className="space-y-3">
                                     <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
                                         <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
-                                            <Icon icon="solar:cpu-bolt-bold" className="text-primary text-lg" />
-                                        </div>
-                                        <div className="min-w-0">
-                                            <p className="text-gray-800 text-sm font-semibold">Mexatronika va robototexnika</p>
-                                            <p className="text-gray-500 text-xs">Matematika • Informatika • Fizika</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
                                             <Icon icon="solar:bolt-circle-bold" className="text-primary text-lg" />
                                         </div>
                                         <div className="min-w-0">
-                                            <p className="text-gray-800 text-sm font-semibold">Yashil energetika va elektr qurilmalar</p>
+                                            <p className="text-gray-800 text-sm font-semibold">Yashil energetika va elektr qurilmalar yo‘nalishi</p>
                                             <p className="text-gray-500 text-xs">Kimyo • Biologiya • Fizika</p>
                                         </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:user-check-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Ishtirok: yakka tartibda, o‘g‘il va qizlar alohida</p>
                                     </div>
 
                                     <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
@@ -294,43 +291,28 @@ const Hero = () => {
                                         Ro&apos;yxatdan o&apos;tish
                                     </a>
                                 </div>
-
-                                <div className='flex flex-wrap items-center gap-x-6 gap-y-2 pt-2'>
-                                    <div className='flex gap-2 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={26} height={26} className='smallImage' />
-                                        <p className='text-sm sm:text-base font-normal text-black'>Yakka tartibda</p>
-                                    </div>
-                                    <div className='flex gap-2 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={26} height={26} className='smallImage' />
-                                        <p className='text-sm sm:text-base font-normal text-black'>O‘g‘il/qiz alohida</p>
-                                    </div>
-                                    <div className='flex gap-2 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={26} height={26} className='smallImage' />
-                                        <p className='text-sm sm:text-base font-normal text-black'>Muhandis & ixtirochi</p>
-                                    </div>
-                                </div>
                             </div>
 
                             <div className='col-span-6 flex justify-center'>
                                 <div className="relative w-full max-w-md flex flex-col gap-4">
                                     <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
                                         <Image
-                                            src={`${getImagePrefix()}muhandislik.jpg`}
-                                            alt="“Muhandis-ixtirochilik” olimpiadasi"
+                                            src={`${getImagePrefix()}energetika.jpg`}
+                                            alt="Muhandislik-ixtirochilik — Yashil energetika"
                                             width={600}
                                             height={400}
                                             className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
                                         <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-lg">
-                                                YANGI
+                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-lg">
+                                                ENERGETIKA
                                             </span>
                                         </div>
                                         <div className="absolute bottom-0 left-0 right-0 p-6">
                                             <div className="flex items-center gap-2 mb-3">
-                                                <Icon icon="solar:settings-bold" className="text-white text-2xl" />
-                                                <span className="text-white font-bold text-lg">Muhandis-ixtirochilik 2026</span>
+                                                <Icon icon="solar:bolt-bold" className="text-white text-2xl" />
+                                                <span className="text-white font-bold text-lg">Yashil energetika</span>
                                             </div>
                                             <div className="flex flex-wrap items-center gap-2">
                                                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
@@ -359,7 +341,124 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Slide 2: Today's Lessons */}
+                    {/* Slide 2: Muhandislik-ixtirochilik — Mexatronika va robototexnika */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-5'>
+                                <div className='flex items-center gap-3 mx-auto lg:mx-0'>
+                                    <span className="relative flex h-3 w-3">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+                                    </span>
+                                    <p className='text-indigo-700 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
+                                        Olimpiada — 2026
+                                    </p>
+                                </div>
+
+                                <h1 className='text-midnight_text text-3xl sm:text-5xl font-bold pt-2 lg:pt-0 leading-tight'>
+                                    “Muhandislik-ixtirochilik” olimpiadasi
+                                </h1>
+
+                                <p className='text-black/70 text-lg'>
+                                    11-sinf hamda o‘rta maxsus va kasbiy ta’lim tashkilotlarining 2-bosqich o‘quvchilari diqqatiga!
+                                    Kelajak muhandislari va ixtirochilarini aniqlash hamda ularning iqtidorini qo‘llab-quvvatlash maqsadida tashkil etilmoqda.
+                                </p>
+
+                                <div className="space-y-3">
+                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                                            <Icon icon="solar:cpu-bolt-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <div className="min-w-0">
+                                            <p className="text-gray-800 text-sm font-semibold">Mexatronika va robototexnika yo‘nalishi</p>
+                                            <p className="text-gray-500 text-xs">Matematika • Informatika • Fizika</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:user-check-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Ishtirok: yakka tartibda, o‘g‘il va qizlar alohida</p>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-green-500/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:calendar-bold" className="text-green-600 text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Ro‘yxatdan o‘tish: 2026-yil 16-mart — 31-mart</p>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
+                                        <div className="flex-shrink-0 w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
+                                            <Icon icon="solar:translation-2-bold" className="text-primary text-lg" />
+                                        </div>
+                                        <p className="text-gray-800 text-sm font-medium">Olimpiada tili: O‘zbek / Rus</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-8 py-4 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl"
+                                    >
+                                        <Icon icon="solar:pen-new-square-bold" className="text-xl" />
+                                        Ro&apos;yxatdan o&apos;tish
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className='col-span-6 flex justify-center'>
+                                <div className="relative w-full max-w-md flex flex-col gap-4">
+                                    <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+                                        <Image
+                                            src={`${getImagePrefix()}kasbiy.jpg`}
+                                            alt="Muhandislik-ixtirochilik — Mexatronika va robototexnika"
+                                            width={600}
+                                            height={400}
+                                            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
+                                        <div className="absolute top-4 left-4">
+                                            <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-lg">
+                                                ROBOTOTEXNIKA
+                                            </span>
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <Icon icon="solar:robot-bold" className="text-white text-2xl" />
+                                                <span className="text-white font-bold text-lg">Mexatronika & robototexnika</span>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                                                    11-sinf
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                                                    O‘MK/KT 2-bosqich
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/80 backdrop-blur-sm text-white">
+                                                    16–31 mart
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="https://t.me/eduxolimpbot"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3.5 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
+                                    >
+                                        <Icon icon="solar:arrow-right-bold" className="text-lg" />
+                                        Hoziroq ro&apos;yxatdan o&apos;ting
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Slide 3: Today's Lessons */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
