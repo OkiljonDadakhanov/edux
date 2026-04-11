@@ -4,7 +4,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Namuna savollari - EduX",
-  description: "Olimpiada savollariga o'xshash namuna savollari bilan mashq qiling va bilimingizni sinab ko'ring",
+  description:
+    "Chuqur fan bo'yicha namuna savollar bilan mashq qiling va bilimingizni sinab ko'ring",
 };
 
 export default function SampleQuestionsPage() {

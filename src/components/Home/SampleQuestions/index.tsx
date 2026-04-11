@@ -72,7 +72,7 @@ const SampleQuestions = () => {
             Namuna savollari
           </h2>
           <p className="text-lg text-gray-600">
-            Olimpiada savollariga o'xshash namuna savollari bilan mashq qiling
+            Chuqur fan bo&apos;yicha namuna savollar bilan bilimingizni mustahkamlang
           </p>
         </div>
 

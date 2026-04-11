@@ -33,7 +33,7 @@ export default function LessonsPage() {
               </h3>
             </div>
             <p className="text-gray-700 mb-6 text-lg">
-              Fan olimpiadalari markazi tomonidan yangi "Kimyo fani - BARCHA UCHUN!" loyihasi start berilmoqda!
+              Yangi &quot;Kimyo fani — BARCHA UCHUN!&quot; loyihasi start berilmoqda!
             </p>
             <p className="text-gray-700 font-semibold mb-4 text-lg">
               Ushbu loyiha orqali SIZ quyidagilarni o'rganasiz:
@@ -55,7 +55,7 @@ export default function LessonsPage() {
             <div className="mt-6 pt-6 border-t border-primary/20">
               <p className="text-gray-700 mb-3 flex items-center gap-2">
                 <Icon icon="solar:verified-check-bold" className="text-green-600 text-lg" />
-                <span>Loyiha doirasidagi amaliy mashg'ulotlar har seshanba kuni Fan olimpiadalari markazining rasmiy sahifalarida yoritib boriladi.</span>
+                <span>Loyiha doirasidagi amaliy mashg&apos;ulotlar har seshanba kuni EduX ijtimoiy tarmoqlarida yoritib boriladi.</span>
               </p>
               <p className="text-primary font-bold text-xl flex items-center gap-2">
                 <Icon icon="solar:close-circle-bold" className="text-lg" />
@@ -71,7 +71,7 @@ export default function LessonsPage() {
             Tahliliy darslar
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar
+            Malakali ekspertlar ishtirokidagi jonli va tahliliy video darslar
           </p>
         </div>
 

@@ -26,7 +26,7 @@ const eduxItems = [
     name: "Namuna savollari",
     href: "/sample-questions",
     icon: "solar:document-text-bold",
-    description: "Olimpiada savollariga o'xshash namuna savollari",
+    description: "Chuqur fan bo'yicha namuna savollar bilan mashq qiling",
     hasSubmenu: false
   },
   {

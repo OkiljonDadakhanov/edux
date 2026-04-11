@@ -7,9 +7,7 @@ import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
-import OlimpiadalarDropdown from "./Navigation/OlimpiadalarDropdown";
 import EduXDropdown from "./Navigation/EduXDropdown";
-import MobileOlimpiadalarDropdown from "./Navigation/MobileOlimpiadalarDropdown";
 import MobileEduXDropdown from "./Navigation/MobileEduXDropdown";
 import Signin from "@/components/Auth/SignIn";
 import { Icon } from "@iconify/react";
@@ -69,9 +67,6 @@ const Header: React.FC = () => {
           <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
             <div className="flex items-center gap-1 xl:gap-2">
               {headerData.map((item, index) => {
-                if (item.label === "Olimpiadalar") {
-                  return <OlimpiadalarDropdown key={index} />;
-                }
                 if (item.label === "EduX") {
                   return <EduXDropdown key={index} />;
                 }
@@ -89,15 +84,6 @@ const Header: React.FC = () => {
               className="border-2 border-primary text-primary px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
             >
               Kirish
-            </a>
-            <a
-              href="https://t.me/eduxolimpbot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-200 flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg"
-            >
-              <Icon icon="mdi:telegram" className="text-lg" />
-              Ro'yxatdan o'tish
             </a>
           </div>
 
@@ -134,9 +120,6 @@ const Header: React.FC = () => {
 
         <nav className="flex flex-col gap-4 p-5">
           {headerData.map((item, index) => {
-            if (item.label === "Olimpiadalar") {
-              return <MobileOlimpiadalarDropdown key={index} />;
-            }
             if (item.label === "EduX") {
               return <MobileEduXDropdown key={index} />;
             }
@@ -151,17 +134,6 @@ const Header: React.FC = () => {
             className="mt-4 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition text-center block"
           >
             Kirish
-          </a>
-
-          <a
-            href="https://t.me/eduxolimpbot"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setNavbarOpen(false)}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition flex items-center justify-center gap-2"
-          >
-            <Icon icon="mdi:telegram" className="text-lg" />
-            Ro'yxatdan o'tish
           </a>
         </nav>
       </div>

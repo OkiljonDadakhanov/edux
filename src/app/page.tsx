@@ -8,8 +8,9 @@ import Newsletter from "@/components/Home/Newsletter";
 import Stat from "@/components/Stat/index";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "EduX - Olimpiadalarga tayyorgarlik platformasi",
-  description: "O'zbekistondagi eng yaxshi olimpiadalarga tayyorgarlik platformasi. Matematika, Fizika, Kimyo va Biologiya fanlaridan professional darslar.",
+  title: "EduX — Onlayn ta'lim va video darslar",
+  description:
+    "Matematika, fizika, kimyo va biologiya bo'yicha tahliliy video darslar, podkastlar va namuna savollar — barchasi bir joyda.",
 };
 
 export default function Home() {

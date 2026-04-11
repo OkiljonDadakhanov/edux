@@ -38,7 +38,7 @@ const amaliyLesson = {
 const featuredPodcast = {
   id: 3,
   episodeNumber: 3,
-  title: "EduX | 3-son — OLIMPIADACHILARNING O'ZLARI BILAN!",
+  title: "EduX | 3-son — Mehmonlar bilan suhbat",
   topic: "G'alaba ortidagi haqiqiy yo'l, real tajriba va samimiy hikoyalar",
   youtubeUrl: "https://www.youtube.com/watch?v=7MQyOQ7y0GI&feature=youtu.be",
   youtubeId: "7MQyOQ7y0GI",
@@ -74,134 +74,7 @@ const Hero = () => {
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
                 <Slider {...settings} className="hero-slider">
-                    {/* Slide 0: Olimpiadalar — AKHU STEAM, Bebras, Moliyaviy savodxonlik */}
-                    <div className="px-2">
-                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-4'>
-                                <div className='flex items-center gap-3 mx-auto lg:mx-0'>
-                                    <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
-                                    </span>
-                                    <p className='text-yellow-600 text-sm font-bold text-center lg:text-start uppercase tracking-widest'>
-                                        Olimpiadalar — 2026
-                                    </p>
-                                </div>
-                                <h1 className='text-midnight_text text-2xl sm:text-4xl font-bold pt-1 lg:pt-0 leading-tight'>
-                                    Olimpiadalarda ishtirok eting
-                                </h1>
-                                <p className='text-black/70 text-base'>
-                                    Ro&apos;yxatdan o&apos;ting va o&apos;z bilimingizni sinab ko&apos;ring.
-                                </p>
-                                <div className="space-y-2 max-h-[280px] overflow-y-auto pr-1">
-                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
-                                            <Icon icon="solar:cup-star-bold" className="text-primary text-sm" />
-                                        </div>
-                                        <div className="min-w-0">
-                                            <p className="text-gray-800 text-sm font-semibold">AKHU STEAM — Matematika, Fizika, Dasturlash, Kiberxavfsizlik</p>
-                                            <p className="text-gray-500 text-xs">10—11-sinf • 31-martga qadar ro&apos;yxatdan o&apos;ting</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-3 bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-primary/10">
-                                        <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
-                                            <Icon icon="solar:code-bold" className="text-primary text-sm" />
-                                        </div>
-                                        <div className="min-w-0">
-                                            <p className="text-gray-800 text-sm font-semibold">Bebras olimpiadasi — Informatika</p>
-                                            <p className="text-gray-500 text-xs">3—11-sinf • onlayn • 10 topshiriq, 30 daqiqa • sertifikat. Ro&apos;yxatdan o&apos;tish 10-aprelgacha</p>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                                <div className="flex flex-col sm:flex-row gap-2 pt-1">
-                                    <a
-                                        href="https://t.me/eduxolimpbot"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:bg-primary transition-colors shadow-lg hover:shadow-xl text-sm"
-                                    >
-                                        <Icon icon="solar:pen-new-square-bold" className="text-lg" />
-                                        Ro&apos;yxatdan o&apos;tish
-                                    </a>
-                                </div>
-                                <div className='flex flex-wrap items-center gap-x-4 gap-y-1 pt-2'>
-                                    <div className='flex gap-1.5 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
-                                        <p className='text-xs sm:text-sm font-normal text-black'>Bebras</p>
-                                    </div>
-                                    <div className='flex gap-1.5 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
-                                        <p className='text-xs sm:text-sm font-normal text-black'>Moliyaviy savodxonlik</p>
-                                    </div>
-                                    <div className='flex gap-1.5 items-center'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="" width={22} height={22} className='smallImage' />
-                                        <p className='text-xs sm:text-sm font-normal text-black'>AKHU STEAM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-span-6 flex justify-center'>
-                                <div className="relative w-full max-w-md flex flex-col gap-3">
-                                    {/* AKHU STEAM Card */}
-                                    <div className="relative rounded-2xl overflow-hidden shadow-xl group flex-shrink-0">
-                                        <Image
-                                            src={`${getImagePrefix()}STEM.png`}
-                                            alt="AKHU STEAM Olimpiadasi — 2026"
-                                            width={600}
-                                            height={180}
-                                            className="w-full h-32 sm:h-36 object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
-                                        <div className="absolute top-2 left-2">
-                                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-yellow-500 text-white shadow">KUTILMOQDA</span>
-                                        </div>
-                                        <div className="absolute bottom-0 left-0 right-0 p-3">
-                                            <span className="text-white font-bold text-sm">AKHU STEAM 2026</span>
-                                            <div className="flex flex-wrap gap-1 mt-1">
-                                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white">10—11 sinf</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* Bebras Card */}
-                                    <div className="relative rounded-2xl overflow-hidden shadow-xl group flex-shrink-0">
-                                        <Image
-                                            src={`${getImagePrefix()}Bebras.jpg`}
-                                            alt="Bebras olimpiadasi — Informatika"
-                                            width={600}
-                                            height={180}
-                                            className="w-full h-32 sm:h-36 object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent"></div>
-                                        <div className="absolute top-2 left-2">
-                                            <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-500 text-white shadow">ONLAYN</span>
-                                        </div>
-                                        <div className="absolute bottom-0 left-0 right-0 p-3">
-                                            <span className="text-white font-bold text-sm">Bebras — 3—11 sinf</span>
-                                            <div className="flex flex-wrap gap-1 mt-1">
-                                                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white">10-aprelgacha</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                                    <a
-                                        href="https://t.me/eduxolimpbot"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold py-3 rounded-2xl hover:bg-secondary transition-colors shadow-md hover:shadow-lg text-sm"
-                                    >
-                                        <Icon icon="solar:arrow-right-bold" className="text-lg" />
-                                        Hoziroq ro&apos;yxatdan o&apos;ting
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                 
-
-                  
-
-                    {/* Slide 3: Today's Lessons */}
+                    {/* Slide: Today's Lessons */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
                             <div className='col-span-6 flex flex-col gap-8'>
@@ -256,7 +129,7 @@ const Hero = () => {
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
                                         <Icon
                                             icon="solar:magnifer-linear"
@@ -271,7 +144,7 @@ const Hero = () => {
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
@@ -321,7 +194,7 @@ const Hero = () => {
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
                                         <Icon
                                             icon="solar:magnifer-linear"
@@ -336,7 +209,7 @@ const Hero = () => {
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
@@ -406,7 +279,7 @@ const Hero = () => {
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
                                         <Icon
                                             icon="solar:magnifer-linear"
@@ -421,7 +294,7 @@ const Hero = () => {
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
@@ -503,7 +376,7 @@ const Hero = () => {
                                     <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                 </Link>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi olimpiadani qidiramiz?" autoComplete="off" />
+                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
                                         <Icon
                                             icon="solar:magnifer-linear"
@@ -518,7 +391,7 @@ const Hero = () => {
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Online olimpiadalar</p>
+                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
                                     </div>
                                     <div className='flex gap-2'>
                                         <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />

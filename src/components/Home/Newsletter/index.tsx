@@ -92,8 +92,8 @@ const Newsletter = () => {
                 Yangiliklar.
               </h3>
               <h3 className="text-base font-normal text-white/75 text-center mb-8">
-                Olimpiadalar, olimpiada reytinglari va yangiliklardan <br />
-                xabardor bo'ling.
+                Yangi darslar, loyiha yangiliklari va muhim e&apos;lonlardan <br />
+                xabardor bo&apos;ling.
               </h3>
 
               <form onSubmit={handleSubmit}>
@@ -146,7 +146,7 @@ const Newsletter = () => {
                     <p className="text-green-300 text-sm font-medium bg-green-500/20 rounded-lg py-2 px-4 inline-flex items-center gap-2">
                       <Icon icon="solar:check-circle-bold" className="text-xl" />
                       Muvaffaqiyatli obuna bo‘ldingiz!
-Endi siz olimpiadalar, reytinglar va muhim yangiliklar haqida birinchilardan bo‘lib xabardor bo‘lasiz.
+Endi siz yangi kontent va muhim yangiliklar haqida birinchilardan bo‘lib xabardor bo‘lasiz.
                     </p>
                   </div>
                 )}

@@ -2,7 +2,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Tahliliy darslar - EduX",
-  description: "Fan olimpiadalariga puxta tayyorgarlik ko'rish maqsadida malakali ekspertlar ishtirokidagi jonli va tahliliy darslar",
+  description:
+    "Malakali ekspertlar ishtirokidagi tahliliy va amaliy video darslar",
 };
 
 export default function LessonsLayout({

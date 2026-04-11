@@ -84,7 +84,7 @@ Ushbu sonda biz:
   {
     id: 3,
     episodeNumber: 3,
-    title: "EduX | 3-son — OLIMPIADACHILARNING O'ZLARI BILAN!",
+    title: "EduX | 3-son — Mehmonlar bilan suhbat",
     description: `⚡️G'alaba ortidagi haqiqiy yo'l, real tajriba va samimiy hikoyalar
 
 Bu galgi mehmonlarimiz — ilmni o'rganibgina qolmay, uni amaliyotda qo'llab muvaffaqiyatga erishgan ZAMONAMIZ QAHRAMONLARI.
@@ -93,21 +93,21 @@ Bu galgi mehmonlarimiz — ilmni o'rganibgina qolmay, uni amaliyotda qo'llab muv
     guests: [
       {
         name: "Daler Rahimov",
-        title: "Olimpiadachi",
+        title: "Mehmon",
         achievements: [
           "Xalqaro kimyo olimpiadasida (IChO 2024 - 2025) ikki karra oltin medal sovrindori"
         ]
       },
       {
         name: "Elbek Zohidjonov",
-        title: "Olimpiadachi",
+        title: "Mehmon",
         achievements: [
           "Xalqaro matematika olimpiadasida (IMO 2024-2025) ikki karra kumush medal sovrindori"
         ]
       },
       {
         name: "Elbek Uroqov",
-        title: "Olimpiadachi",
+        title: "Mehmon",
         achievements: [
           "Xalqaro Fizika olimpiadasining bronza medal sohibi"
         ]
