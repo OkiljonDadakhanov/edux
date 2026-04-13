@@ -45,6 +45,20 @@ const featuredPodcast = {
   guests: ["Daler Rahimov", "Elbek Zohidjonov", "Elbek Uroqov"]
 };
 
+const TELEGRAM_BOT_URL = "https://t.me/eduxolimpbot";
+
+const RegisterCTA = () => (
+    <a
+        href={TELEGRAM_BOT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white transition hover:bg-secondary/90"
+    >
+        <Icon icon="mdi:telegram" className="text-lg" />
+        Ro'yxatdan o'tish
+    </a>
+);
+
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -121,13 +135,16 @@ const Hero = () => {
                                         </Link>
                                     ))}
                                 </div>
-                                <Link 
-                                    href="/lessons"
-                                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                >
-                                    Barcha darslarni ko'rish
-                                    <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                </Link>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <Link
+                                        href="/lessons"
+                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                                    >
+                                        Barcha darslarni ko'rish
+                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
+                                    </Link>
+                                    <RegisterCTA />
+                                </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
@@ -186,13 +203,16 @@ const Hero = () => {
                                         </div>
                                     ))}
                                 </div>
-                                <Link 
-                                    href="/podcast"
-                                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                >
-                                    Podkastni tomosha qiling
-                                    <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                </Link>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <Link
+                                        href="/podcast"
+                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                                    >
+                                        Podkastni tomosha qiling
+                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
+                                    </Link>
+                                    <RegisterCTA />
+                                </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
@@ -271,13 +291,16 @@ const Hero = () => {
                                 <p className='text-black/70 text-lg mb-4'>
                                     {tahliliyLesson.description}
                                 </p>
-                                <Link 
-                                    href="/lessons#tahliliy"
-                                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                >
-                                    Barcha tahliliy darslarni ko'rish
-                                    <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                </Link>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <Link
+                                        href="/lessons#tahliliy"
+                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                                    >
+                                        Barcha tahliliy darslarni ko'rish
+                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
+                                    </Link>
+                                    <RegisterCTA />
+                                </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
@@ -368,13 +391,16 @@ const Hero = () => {
                                 <p className='text-black/70 text-lg mb-4'>
                                     Kimyo fani - BARCHA UCHUN! loyihasi doirasidagi amaliy laboratoriya darsi
                                 </p>
-                                <Link 
-                                    href="/lessons#amaliy"
-                                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                >
-                                    Barcha amaliy darslarni ko'rish
-                                    <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                </Link>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <Link
+                                        href="/lessons#amaliy"
+                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                                    >
+                                        Barcha amaliy darslarni ko'rish
+                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
+                                    </Link>
+                                    <RegisterCTA />
+                                </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
                                     <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
