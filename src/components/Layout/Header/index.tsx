@@ -12,6 +12,19 @@ import MobileEduXDropdown from "./Navigation/MobileEduXDropdown";
 import Signin from "@/components/Auth/SignIn";
 import { Icon } from "@iconify/react";
 
+const TELEGRAM_BOT_URL = "https://t.me/eduxolimpbot";
+
+const RegisterCTA = () => (
+    <a
+        href={TELEGRAM_BOT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white transition hover:bg-secondary/90"
+    >
+        <Icon icon="mdi:telegram" className="text-lg" />
+        Ro'yxatdan o'tish
+    </a>
+);
 const Header: React.FC = () => {
   const pathUrl = usePathname();
 
@@ -50,7 +63,10 @@ const Header: React.FC = () => {
       isSignInOpen || navbarOpen ? "hidden" : "";
   }, [isSignInOpen, navbarOpen]);
 
+
   return (
+
+    
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 bg-white border-b border-gray-100 ${
         sticky ? "shadow-md" : "shadow-sm"
@@ -74,9 +90,13 @@ const Header: React.FC = () => {
               })}
             </div>
           </nav>
+          
 
           {/* Desktop Auth Buttons - Right Side */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <div className="flex flex-wrap items-center gap-4 pt-1">
+                                    <RegisterCTA />
+                                </div>
             <a
               href="https://app.edux.center"
               target="_blank"
@@ -125,6 +145,9 @@ const Header: React.FC = () => {
             }
             return <MobileHeaderLink key={index} item={item} />;
           })}
+            <div className="flex flex-wrap items-center gap-4 pt-1">
+                                    <RegisterCTA />
+                                </div>
 
           <a
             href="https://app.edux.center"

@@ -224,7 +224,6 @@ const Hero = () => {
                                         Barcha darslarni ko'rish
                                         <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                     </Link>
-                                    <RegisterCTA />
                                 </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
@@ -292,7 +291,6 @@ const Hero = () => {
                                         Podkastni tomosha qiling
                                         <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                     </Link>
-                                    <RegisterCTA />
                                 </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
@@ -380,7 +378,6 @@ const Hero = () => {
                                         Barcha tahliliy darslarni ko'rish
                                         <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                     </Link>
-                                    <RegisterCTA />
                                 </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
@@ -480,7 +477,6 @@ const Hero = () => {
                                         Barcha amaliy darslarni ko'rish
                                         <Icon icon="solar:arrow-right-bold" className="text-xl" />
                                     </Link>
-                                    <RegisterCTA />
                                 </div>
                                 <div className="relative rounded-full pt-5 lg:pt-0">
                                     <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
