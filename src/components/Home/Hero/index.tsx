@@ -45,6 +45,24 @@ const featuredPodcast = {
   guests: ["Daler Rahimov", "Elbek Zohidjonov", "Elbek Uroqov"]
 };
 
+const programmingOlympiad = {
+    title: "Ilk bor Dasturlash bo'yicha tijoriy olimpiada tashkil etiladi",
+    description:
+        "15-aprel kuni Samarqand shahrida Xalqaro talabalar forumi doirasida School 21 va Zarmed University hamkorligida, Fan olimpiadalari markazi ko'magida dasturlash bo'yicha olimpiada bo'lib o'tadi.",
+    subtitle:
+        "Ushbu musobaqa o'z bilim va ko'nikmalarini amalda sinab ko'rmoqchi bo'lganlar uchun ajoyib imkoniyat!",
+    date: "15-aprel",
+    time: "14:00",
+    location: "School 21, Samarqand",
+    image: "IMG_0951.jpeg",
+    format: [
+        "50 ta savol (MCQ — test ko'rinishida)",
+        "Yechish uchun 3 soat vaqt",
+        "Dasturlash tillari: C, C++, Python, JavaScript",
+        "Ishtirokchilar soni: 70 nafargacha",
+    ],
+};
+
 const TELEGRAM_BOT_URL = "https://t.me/eduxolimpbot";
 
 const RegisterCTA = () => (
@@ -88,6 +106,69 @@ const Hero = () => {
         <section id="home-section" className='bg-slateGray'>
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
                 <Slider {...settings} className="hero-slider">
+                    {/* Slide: Dasturlash Olimpiadasi */}
+                    <div className="px-2">
+                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
+                            <div className='col-span-6 flex flex-col gap-5'>
+                                <div className='flex gap-2 mx-auto lg:mx-0 mb-2'>
+                                    <Icon
+                                        icon="solar:cup-star-bold"
+                                        className="text-secondary text-xl inline-block me-2"
+                                    />
+                                    <p className='text-secondary text-sm font-semibold text-center lg:text-start'>
+                                        Dasturlash olimpiadasi
+                                    </p>
+                                </div>
+                                <h1 className='text-midnight_text text-3xl sm:text-5xl font-semibold leading-tight'>
+                                    {programmingOlympiad.title}
+                                </h1>
+                                <p className='text-black/80 text-base sm:text-lg'>
+                                    {programmingOlympiad.description}
+                                </p>
+                                <p className='text-black/70 text-base'>
+                                    {programmingOlympiad.subtitle}
+                                </p>
+
+                                <div className="flex flex-wrap gap-3">
+                                    <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-secondary shadow-sm">
+                                        {programmingOlympiad.date}
+                                    </span>
+                                    <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-secondary shadow-sm">
+                                        {programmingOlympiad.time}
+                                    </span>
+                                    <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-secondary shadow-sm">
+                                        {programmingOlympiad.location}
+                                    </span>
+                                </div>
+
+                                <div className="space-y-2">
+                                    {programmingOlympiad.format.map((item, index) => (
+                                        <div key={index} className="flex items-start gap-2">
+                                            <Icon icon="solar:check-circle-bold" className="mt-0.5 text-secondary text-lg flex-shrink-0" />
+                                            <p className="text-sm sm:text-base text-black/80">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="flex flex-wrap items-center gap-4 pt-1">
+                                    <RegisterCTA />
+                                </div>
+                            </div>
+                            <div className='col-span-6 flex justify-center'>
+                                <div className="relative w-full max-w-xl overflow-hidden rounded-2xl shadow-lg">
+                                    <Image
+                                        src={`${getImagePrefix()}${programmingOlympiad.image}`}
+                                        alt="Dasturlash olimpiadasi afishasi"
+                                        width={820}
+                                        height={1024}
+                                        className="h-auto w-full object-cover"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Slide: Today's Lessons */}
                     <div className="px-2">
                         <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
