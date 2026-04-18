@@ -1,5 +1,66 @@
 const BASE_URL = 'https://app.edux.center/api/stats';
 
+/** Origin for Stats controller (same host as Swagger). Override with NEXT_PUBLIC_EDUX_API_ORIGIN if needed. */
+const EDUX_API_ORIGIN =
+  typeof process.env.NEXT_PUBLIC_EDUX_API_ORIGIN === 'string' &&
+  process.env.NEXT_PUBLIC_EDUX_API_ORIGIN.trim().length > 0
+    ? process.env.NEXT_PUBLIC_EDUX_API_ORIGIN.replace(/\/$/, '')
+    : 'https://app.edux.center';
+
+/** GET /api/Stats/GetTopPerformersReport — query: grade?, size (required, default 10), e.g. ?size=10 */
+const TOP_PERFORMERS_REPORT_PATH = '/api/Stats/GetTopPerformersReport';
+
+export type TopPerformerReportRow = Record<string, string | number | null | undefined>;
+
+/** Backend may return a bare array or { value: [...], Count?: number } */
+export type TopPerformersReportPayload =
+  | TopPerformerReportRow[]
+  | { value: TopPerformerReportRow[]; Count?: number };
+
+function normalizeTopPerformersPayload(data: unknown): TopPerformerReportRow[] {
+  if (Array.isArray(data)) {
+    return data as TopPerformerReportRow[];
+  }
+  if (
+    data !== null &&
+    typeof data === 'object' &&
+    Array.isArray((data as { value?: unknown }).value)
+  ) {
+    return (data as { value: TopPerformerReportRow[] }).value;
+  }
+  return [];
+}
+
+export async function getTopPerformersReport(options: {
+  grade?: number;
+  size?: number;
+}): Promise<TopPerformerReportRow[]> {
+  const size = options.size ?? 10;
+  try {
+    const params = new URLSearchParams();
+    params.append('size', String(size));
+    if (options.grade !== undefined) {
+      params.append('grade', String(options.grade));
+    }
+
+    const url = `${EDUX_API_ORIGIN}${TOP_PERFORMERS_REPORT_PATH}?${params.toString()}`;
+
+    const response = await fetch(url, {
+      headers: { accept: 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const raw = (await response.json()) as unknown;
+    return normalizeTopPerformersPayload(raw);
+  } catch (error) {
+    console.error('Error fetching top performers report:', error);
+    return [];
+  }
+}
+
 export interface ApiRegionCount {
   regionId: number;
   regionName: string;

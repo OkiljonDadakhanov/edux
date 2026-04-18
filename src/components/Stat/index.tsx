@@ -3,12 +3,9 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import {
-  studentsRankingData,
   regions,
-  subjects,
   grades,
   topCounts,
-  type StudentRanking,
   type RegionRanking,
   type DistrictData,
   type SchoolData
@@ -18,6 +15,7 @@ import {
   getUsersCountByRegion,
   getUsersCountByDistrict,
   getUsersCountByOrganization,
+  getTopPerformersReport,
   type ApiRegionCount,
   type ApiDistrictCount,
   type ApiOrganizationCount
@@ -89,14 +87,9 @@ const Statistics = () => {
           <CombinedRankingTable />
         </div>
 
-        {/* Second Table: Students Ranking (Umumiy/Sinflar kesimida) */}
+        {/* O‘quvchilar reytingi — API */}
         <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8 mb-12">
-          <StudentsRankingTableByGrade />
-        </div>
-
-        {/* Third Table: Students Ranking (Umumiy/Fanlar kesimida) */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8">
-          <StudentsRankingTableBySubject />
+          <StudentsRankingApiSection />
         </div>
       </div>
     </section>
@@ -477,213 +470,80 @@ const CombinedRankingTable = () => {
   );
 };
 
-// Students Ranking Table by Grade (Second Table)
-const StudentsRankingTableByGrade = () => {
-  const [selectedFilter, setSelectedFilter] = useState("umumiy reyting");
+const REPORT_FIXED_COLUMNS = ["#", "To'liq ism", "Tuman", "Maktab nomi", "Sinf"];
+
+function gradeToApiQuery(gradeLabel: string): number | undefined {
+  if (gradeLabel === "Barcha sinflar") return undefined;
+  const m = gradeLabel.match(/^(\d{1,2})-sinf$/);
+  return m ? parseInt(m[1], 10) : undefined;
+}
+
+function orderedReportColumns(row: Record<string, unknown>): string[] {
+  const keys = Object.keys(row);
+  const out: string[] = [];
+  for (const k of REPORT_FIXED_COLUMNS) {
+    if (keys.includes(k)) out.push(k);
+  }
+  const jami = "Jami";
+  const rest = keys
+    .filter((k) => !REPORT_FIXED_COLUMNS.includes(k) && k !== jami)
+    .sort((a, b) => a.localeCompare(b, "uz"));
+  out.push(...rest);
+  if (keys.includes(jami)) out.push(jami);
+  return out;
+}
+
+function formatReportCell(value: unknown): string {
+  if (value === null || value === undefined) return "—";
+  if (typeof value === "number") return String(value);
+  return String(value);
+}
+
+/** O‘quvchilar reytingi — GET /api/Stats/GetTopPerformersReport */
+const StudentsRankingApiSection = () => {
   const [selectedGrade, setSelectedGrade] = useState("Barcha sinflar");
-  const [selectedSubject, setSelectedSubject] = useState("Barcha fanlar");
   const [topCount, setTopCount] = useState<number | string>(10);
+  const [rows, setRows] = useState<Record<string, unknown>[]>([]);
+  const [columns, setColumns] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const filteredData = useMemo(() => {
-    let filtered = [...studentsRankingData];
-
-    if (selectedGrade !== "Barcha sinflar") {
-      filtered = filtered.filter((item) => item.grade === selectedGrade);
-    }
-
-    const sorted = filtered.sort((a, b) => {
-      // If a specific subject is selected, sort by that subject's score
-      if (selectedSubject !== "Barcha fanlar") {
-        const subjectKey = selectedSubject.toLowerCase() as keyof StudentRanking;
-        return (b[subjectKey] as number) - (a[subjectKey] as number);
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const grade = gradeToApiQuery(selectedGrade);
+        const size =
+          topCount === "Barcha" ? 100 : typeof topCount === "number" ? topCount : 10;
+        const data = await getTopPerformersReport({ grade, size });
+        if (cancelled) return;
+        const list = data as Record<string, unknown>[];
+        setRows(list);
+        setColumns(list[0] ? orderedReportColumns(list[0]) : []);
+      } catch {
+        if (!cancelled) setError("Ma'lumotlarni yuklashda xatolik yuz berdi.");
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-      // Otherwise, sort by umumiy
-      return b.umumiy - a.umumiy;
-    });
+    };
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedGrade, topCount]);
 
-    if (topCount === "Barcha") return sorted;
-    return sorted.slice(0, topCount as number);
-  }, [selectedFilter, selectedGrade, selectedSubject, topCount]);
-
-  const showSubjectColumns = selectedSubject === "Barcha fanlar";
-  const selectedSubjectKey = selectedSubject.toLowerCase() as string;
+  const isFixedLeftColumn = (key: string) => REPORT_FIXED_COLUMNS.includes(key);
 
   return (
     <div>
       <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">O'quvchilar reytingi</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">O&apos;quvchilar reytingi</h3>
+        <p className="text-sm text-gray-600 mb-4 max-w-3xl">
+          Reyting ma&apos;lumotlari serverdan keladi (olimpiada va bosqichlar bo&apos;yicha ustunlar dinamik ko&apos;rinadi).
+        </p>
         <div className="flex flex-wrap gap-4">
-          <select
-            value={selectedFilter}
-            onChange={(e) => setSelectedFilter(e.target.value)}
-            className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-          >
-            <option value="umumiy reyting">Umumiy reyting</option>
-            <option value="sinflar kesimida">Sinflar kesimida</option>
-          </select>
-          {(selectedFilter === "umumiy reyting" || selectedFilter === "sinflar kesimida") && (
-            <select
-              value={selectedGrade}
-              onChange={(e) => setSelectedGrade(e.target.value)}
-              className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-            >
-              {grades.map((grade) => (
-                <option key={grade} value={grade}>
-                  {grade}
-                </option>
-              ))}
-            </select>
-          )}
-          <select
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-            className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-          >
-            {subjects.map((subject) => (
-              <option key={subject} value={subject}>
-                {subject}
-              </option>
-            ))}
-          </select>
-          <select
-            value={topCount}
-            onChange={(e) => setTopCount(e.target.value === "Barcha" ? "Barcha" : parseInt(e.target.value))}
-            className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-          >
-            {topCounts.map((count) => (
-              <option key={count} value={count}>
-                Top {count}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-gradient-to-r from-primary to-secondary text-white">
-              <th className="px-6 py-4 text-left font-semibold">#</th>
-              <th className="px-6 py-4 text-left font-semibold">To'liq ism</th>
-              <th className="px-6 py-4 text-left font-semibold">Tuman</th>
-              <th className="px-6 py-4 text-left font-semibold">Maktab nomi</th>
-              <th className="px-6 py-4 text-center font-semibold">Sinf</th>
-              {showSubjectColumns ? (
-                <>
-                  <th className="px-6 py-4 text-center font-semibold">Matematika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Fizika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Kimyo</th>
-                  <th className="px-6 py-4 text-center font-semibold">Biologiya</th>
-                  <th className="px-6 py-4 text-center font-semibold">Informatika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Umumiy reyting</th>
-                </>
-              ) : (
-                <>
-                  <th className="px-6 py-4 text-center font-semibold">{selectedSubject}</th>
-                  <th className="px-6 py-4 text-center font-semibold">Umumiy reyting</th>
-                </>
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((item, index) => (
-              <tr
-                key={item.id}
-                className={`border-b hover:bg-blue-50 transition-colors ${
-                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                }`}
-              >
-                <td className="px-6 py-4 font-bold text-primary">{index + 1}</td>
-                <td className="px-6 py-4 font-semibold text-gray-900">{item.fullName}</td>
-                <td className="px-6 py-4 text-gray-700">{item.district}</td>
-                <td className="px-6 py-4 text-gray-700">{item.schoolName}</td>
-                <td className="px-6 py-4 text-center text-gray-700">{item.grade}</td>
-                {showSubjectColumns ? (
-                  <>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.matematika}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.fizika}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.kimyo}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.biologiya}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.informatika}</td>
-                    <td className="px-6 py-4 text-center font-bold text-primary">{item.umumiy}</td>
-                  </>
-                ) : (
-                  <>
-                    <td className="px-6 py-4 text-center font-bold text-primary">
-                      {item[selectedSubjectKey as keyof StudentRanking] as number}
-                    </td>
-                    <td className="px-6 py-4 text-center font-bold text-primary">{item.umumiy}</td>
-                  </>
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
-
-// Students Ranking Table by Subject (Third Table - Vice Versa)
-const StudentsRankingTableBySubject = () => {
-  const [selectedFilter, setSelectedFilter] = useState("umumiy reyting");
-  const [selectedSubject, setSelectedSubject] = useState("Barcha fanlar");
-  const [selectedGrade, setSelectedGrade] = useState("Barcha sinflar");
-  const [topCount, setTopCount] = useState<number | string>(10);
-
-  const filteredData = useMemo(() => {
-    let filtered = [...studentsRankingData];
-
-    if (selectedGrade !== "Barcha sinflar") {
-      filtered = filtered.filter((item) => item.grade === selectedGrade);
-    }
-
-    const sorted = filtered.sort((a, b) => {
-      if (selectedFilter === "umumiy reyting") {
-        return b.umumiy - a.umumiy;
-      } else if (selectedFilter === "fanlar kesimida") {
-        if (selectedSubject === "Barcha fanlar") {
-          return b.umumiy - a.umumiy;
-        }
-        const subjectKey = selectedSubject.toLowerCase() as keyof StudentRanking;
-        return (b[subjectKey] as number) - (a[subjectKey] as number);
-      }
-      return b.umumiy - a.umumiy;
-    });
-
-    if (topCount === "Barcha") return sorted;
-    return sorted.slice(0, topCount as number);
-  }, [selectedFilter, selectedSubject, selectedGrade, topCount]);
-
-  const showSubjectColumns = selectedSubject === "Barcha fanlar";
-  const selectedSubjectKey = selectedSubject.toLowerCase() as string;
-
-  return (
-    <div>
-      <div className="mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">O'quvchilar reytingi</h3>
-        <div className="flex flex-wrap gap-4">
-          <select
-            value={selectedFilter}
-            onChange={(e) => setSelectedFilter(e.target.value)}
-            className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-          >
-            <option value="umumiy reyting">Umumiy reyting</option>
-            <option value="fanlar kesimida">Fanlar kesimida</option>
-          </select>
-          {(selectedFilter === "umumiy reyting" || selectedFilter === "fanlar kesimida") && (
-            <select
-              value={selectedSubject}
-              onChange={(e) => setSelectedSubject(e.target.value)}
-              className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
-            >
-              {subjects.map((subject) => (
-                <option key={subject} value={subject}>
-                  {subject}
-                </option>
-              ))}
-            </select>
-          )}
           <select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
@@ -697,7 +557,9 @@ const StudentsRankingTableBySubject = () => {
           </select>
           <select
             value={topCount}
-            onChange={(e) => setTopCount(e.target.value === "Barcha" ? "Barcha" : parseInt(e.target.value))}
+            onChange={(e) =>
+              setTopCount(e.target.value === "Barcha" ? "Barcha" : parseInt(e.target.value, 10))
+            }
             className="px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary focus:outline-none font-medium"
           >
             {topCounts.map((count) => (
@@ -709,64 +571,73 @@ const StudentsRankingTableBySubject = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="mb-4 text-sm font-medium text-red-600" role="alert">
+          {error}
+        </p>
+      )}
+
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[720px]">
           <thead>
             <tr className="bg-gradient-to-r from-primary to-secondary text-white">
-              <th className="px-6 py-4 text-left font-semibold">#</th>
-              <th className="px-6 py-4 text-left font-semibold">To'liq ism</th>
-              <th className="px-6 py-4 text-left font-semibold">Tuman</th>
-              <th className="px-6 py-4 text-left font-semibold">Maktab nomi</th>
-              <th className="px-6 py-4 text-center font-semibold">Sinf</th>
-              {showSubjectColumns ? (
-                <>
-                  <th className="px-6 py-4 text-center font-semibold">Matematika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Fizika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Kimyo</th>
-                  <th className="px-6 py-4 text-center font-semibold">Biologiya</th>
-                  <th className="px-6 py-4 text-center font-semibold">Informatika</th>
-                  <th className="px-6 py-4 text-center font-semibold">Umumiy reyting</th>
-                </>
-              ) : (
-                <>
-                  <th className="px-6 py-4 text-center font-semibold">{selectedSubject}</th>
-                  <th className="px-6 py-4 text-center font-semibold">Umumiy reyting</th>
-                </>
-              )}
+              {columns.map((col) => (
+                <th
+                  key={col}
+                  title={col}
+                  className={`px-4 py-3 text-xs sm:text-sm font-semibold whitespace-normal max-w-[14rem] ${
+                    isFixedLeftColumn(col) ? "text-left" : "text-center"
+                  }`}
+                >
+                  {col === "Jami" ? "Jami (umumiy)" : col}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((item, index) => (
-              <tr
-                key={item.id}
-                className={`border-b hover:bg-blue-50 transition-colors ${
-                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                }`}
-              >
-                <td className="px-6 py-4 font-bold text-primary">{index + 1}</td>
-                <td className="px-6 py-4 font-semibold text-gray-900">{item.fullName}</td>
-                <td className="px-6 py-4 text-gray-700">{item.district}</td>
-                <td className="px-6 py-4 text-gray-700">{item.schoolName}</td>
-                <td className="px-6 py-4 text-center text-gray-700">{item.grade}</td>
-                {showSubjectColumns ? (
-                  <>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.matematika}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.fizika}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.kimyo}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.biologiya}</td>
-                    <td className="px-6 py-4 text-center text-gray-700">{item.informatika}</td>
-                    <td className="px-6 py-4 text-center font-bold text-primary">{item.umumiy}</td>
-                  </>
-                ) : (
-                  <>
-                    <td className="px-6 py-4 text-center font-bold text-primary">
-                      {item[selectedSubjectKey as keyof StudentRanking] as number}
-                    </td>
-                    <td className="px-6 py-4 text-center font-bold text-primary">{item.umumiy}</td>
-                  </>
-                )}
+            {loading ? (
+              <tr>
+                <td
+                  colSpan={Math.max(columns.length, 1)}
+                  className="px-6 py-10 text-center text-gray-600"
+                >
+                  Yuklanmoqda...
+                </td>
               </tr>
-            ))}
+            ) : rows.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={Math.max(columns.length, 1)}
+                  className="px-6 py-10 text-center text-gray-600"
+                >
+                  Ma&apos;lumot topilmadi.
+                </td>
+              </tr>
+            ) : (
+              rows.map((row, rowIndex) => (
+                <tr
+                  key={`${String(row["To'liq ism"] ?? rowIndex)}-${rowIndex}`}
+                  className={`border-b hover:bg-blue-50 transition-colors ${
+                    rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  }`}
+                >
+                  {columns.map((col) => {
+                    const raw = row[col];
+                    const align = isFixedLeftColumn(col) ? "text-left" : "text-center";
+                    return (
+                      <td
+                        key={col}
+                        className={`px-4 py-3 text-xs sm:text-sm text-gray-800 ${align} ${
+                          col === "Jami" ? "font-bold text-primary" : ""
+                        }`}
+                      >
+                        {formatReportCell(raw)}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
