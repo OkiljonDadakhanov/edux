@@ -32,12 +32,7 @@ const teamMembers: TeamMember[] = [
     imgSrc: "/team/shahnoza.JPG",
     imgPosition: "center top",
   },
-  {
-    name: "Guljahon Soatova",
-    role: "Pedagoglar bilan ishlash bo'yicha mutaxassis",
-    imgSrc: "/team/guljahon.JPG",
-    imgPosition: "center top",
-  },
+
   {
     name: "Tamanno To'rayeva",
     role: "PR va media boshlig'i",
