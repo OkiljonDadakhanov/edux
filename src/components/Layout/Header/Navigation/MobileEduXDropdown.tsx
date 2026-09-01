@@ -21,7 +21,7 @@ const videoDarslarSubItems = [
 const eduxItems = [
   { id: 1, name: "Namuna savollari", href: "/sample-questions", icon: "solar:document-text-bold", hasSubmenu: false },
   { id: 2, name: "Video darslar", href: "/lessons", icon: "solar:video-frame-play-vertical-bold", hasSubmenu: true },
-  { id: 3, name: "Bizning jamoa", href: "/#team", icon: "solar:users-group-rounded-bold", hasSubmenu: false },
+  // { id: 3, name: "Bizning jamoa", href: "/#team", icon: "solar:users-group-rounded-bold", hasSubmenu: false },
   { id: 4, name: "Mentorlar jamoasi", href: "/#mentor", icon: "solar:users-group-two-rounded-bold", hasSubmenu: false },
   { id: 5, name: "Podkast", href: "/podcast", icon: "solar:podcast-bold", hasSubmenu: false },
 ];

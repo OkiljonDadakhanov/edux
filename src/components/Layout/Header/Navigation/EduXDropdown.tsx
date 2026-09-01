@@ -37,14 +37,14 @@ const eduxItems = [
     description: "Tahliliy va chuqur video darslar",
     hasSubmenu: true
   },
-  {
-    id: 3,
-    name: "Bizning jamoa",
-    href: "/#team",
-    icon: "solar:users-group-rounded-bold",
-    description: "Loyiha jamoasi bilan tanishing",
-    hasSubmenu: false
-  },
+  // {
+  //   id: 3,
+  //   name: "Bizning jamoa",
+  //   href: "/#team",
+  //   icon: "solar:users-group-rounded-bold",
+  //   description: "Loyiha jamoasi bilan tanishing",
+  //   hasSubmenu: false
+  // },
   {
     id: 4,
     name: "Mentorlar jamoasi",

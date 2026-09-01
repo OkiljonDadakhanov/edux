@@ -21,7 +21,7 @@ export default function Home() {
       <Courses />
       
       {/* <Testimonial /> */}
-      <Team />
+      {/* <Team /> */}
       <Mentor />
       <Newsletter />
     </main>
