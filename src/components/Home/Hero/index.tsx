@@ -1,463 +1,399 @@
 "use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { getImagePrefix } from '@/utils/util';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useState } from 'react';
-import { studentsRankingData } from '@/app/api/statisticsData';
-import { lessonsData } from '@/app/api/lessonsData';
 
-// Get top 3 students
-const top3Students = studentsRankingData
-  .sort((a, b) => b.umumiy - a.umumiy)
-  .slice(0, 3);
-
-// Get 2 lessons for today's lessons
-const todayLessons = lessonsData.slice(0, 2);
-
-// Get one tahliliy lesson
-const tahliliyLesson = lessonsData.find(lesson => lesson.type === 'tahliliy') || lessonsData[0];
-
-// Get one amaliy lesson (from practical lessons)
-const amaliyLesson = {
-  id: 1,
-  topic: "Titrlash jarayoni",
-  mentorName: "Firdavs Sobirov",
-  mentorTitle: "Kimyo eksperti",
-  subject: "Kimyo",
-  youtubeUrl: "https://youtu.be/xFleHlGV-00?si=p3RVmp81ceAhKo0S",
-  youtubeId: "xFleHlGV-00",
-  imgSrc: "images/courses/chemistry.jpg",
-  difficulty: "Boshlang'ich"
-};
-
-// Get one podcast episode (latest)
-const featuredPodcast = {
-  id: 3,
-  episodeNumber: 3,
-  title: "EduX | 3-son — Mehmonlar bilan suhbat",
-  topic: "G'alaba ortidagi haqiqiy yo'l, real tajriba va samimiy hikoyalar",
-  youtubeUrl: "https://www.youtube.com/watch?v=7MQyOQ7y0GI&feature=youtu.be",
-  youtubeId: "7MQyOQ7y0GI",
-  guests: ["Daler Rahimov", "Elbek Zohidjonov", "Elbek Uroqov"]
-};
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Icon } from "@iconify/react";
+import { getImagePrefix } from "@/utils/util";
+import { lessonsData } from "@/app/api/lessonsData";
 
 const TELEGRAM_BOT_URL = "https://t.me/eduxolimpbot";
 
-const RegisterCTA = () => (
-    <a
-        href={TELEGRAM_BOT_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold text-white transition hover:bg-secondary/90"
-    >
-        <Icon icon="mdi:telegram" className="text-lg" />
-        Ro'yxatdan o'tish
-    </a>
-);
-
-const Hero = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 10000,
-        pauseOnHover: false,
-        fade: true,
-        cssEase: "linear",
-        beforeChange: (current: number, next: number) => setCurrentSlide(next),
-        customPaging: (i: number) => (
-            <div className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-secondary' : 'bg-gray-300'}`} />
-        ),
-        appendDots: (dots: React.ReactNode) => (
-            <div className="flex justify-center gap-2 mt-8">
-                {dots}
-            </div>
-        )
-    };
-
-    return (
-        <section id="home-section" className='bg-slateGray'>
-            <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-20 pb-20">
-                <Slider {...settings} className="hero-slider">
-                    {/* Slide: Today's Lessons */}
-                    <div className="px-2">
-                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-8'>
-                                <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
-                                    <Icon
-                                        icon="solar:calendar-bold"
-                                        className="text-secondary text-xl inline-block me-2"
-                                    />
-                                    <p className='text-secondary text-sm font-semibold text-center lg:text-start'>
-                                        Bugungi darslar
-                                    </p>
-                                </div>
-                                <h1 className='text-midnight_text text-4xl sm:text-5xl font-semibold pt-5 lg:pt-0 mb-4'>
-                                    Bugun o'rganing
-                                </h1>
-                                <div className="space-y-3 mb-4">
-                                    {todayLessons.map((lesson) => (
-                                        <Link 
-                                            key={lesson.id}
-                                            href="/lessons"
-                                            className="flex items-center gap-3 bg-white/50 rounded-lg p-3 hover:bg-white transition-all group"
-                                        >
-                                            <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden">
-                                                <Image
-                                                    src={`${getImagePrefix()}${lesson.imgSrc}`}
-                                                    alt={lesson.topic}
-                                                    width={64}
-                                                    height={64}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                                                />
-                                            </div>
-                                            <div className="flex-grow">
-                                                <p className="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
-                                                    {lesson.topic}
-                                                </p>
-                                                <p className="text-sm text-gray-600">{lesson.mentorName}</p>
-                                            </div>
-                                            <div className="flex-shrink-0">
-                                                <Icon 
-                                                    icon="solar:play-circle-bold" 
-                                                    className="text-primary text-2xl group-hover:scale-110 transition-transform"
-                                                />
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
-                                <div className="flex flex-wrap items-center gap-4">
-                                    <Link
-                                        href="/lessons"
-                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                    >
-                                        Barcha darslarni ko'rish
-                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                    </Link>
-                                </div>
-                                <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
-                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
-                                        <Icon
-                                            icon="solar:magnifer-linear"
-                                            className="text-white text-4xl inline-block"
-                                        />
-                                    </button>
-                                </div>
-                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-span-6 flex justify-center'>
-                                <Image src={`${getImagePrefix()}images/banner/mahila.png`} alt="nothing" width={1000} height={805} />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Slide 3: Podcast */}
-                    <div className="px-2">
-                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-8'>
-                                <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
-                                    <Icon
-                                        icon="solar:podcast-bold"
-                                        className="text-secondary text-xl inline-block me-2"
-                                    />
-                                    <p className='text-secondary text-sm font-semibold text-center lg:text-start'>
-                                        Podkast
-                                    </p>
-                                </div>
-                                <h1 className='text-midnight_text text-4xl sm:text-5xl font-semibold pt-5 lg:pt-0 mb-4'>
-                                    {featuredPodcast.title}
-                                </h1>
-                                <p className='text-black/70 text-lg mb-4'>
-                                    {featuredPodcast.topic}
-                                </p>
-                                <div className="space-y-2 mb-4">
-                                    <p className="text-sm font-semibold text-gray-700">Mehmonlar:</p>
-                                    {featuredPodcast.guests.map((guest, idx) => (
-                                        <div key={idx} className="flex items-center gap-2 text-gray-600">
-                                            <Icon icon="solar:user-bold" className="text-primary text-sm" />
-                                            <span className="text-sm">{guest}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="flex flex-wrap items-center gap-4">
-                                    <Link
-                                        href="/podcast"
-                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                    >
-                                        Podkastni tomosha qiling
-                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                    </Link>
-                                </div>
-                                <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
-                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
-                                        <Icon
-                                            icon="solar:magnifer-linear"
-                                            className="text-white text-4xl inline-block"
-                                        />
-                                    </button>
-                                </div>
-                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-span-6 flex justify-center'>
-                                <div className="relative w-full max-w-md">
-                                    <div className="relative" style={{ paddingBottom: '56.25%' }}>
-                                        <Image
-                                            src={`https://img.youtube.com/vi/${featuredPodcast.youtubeId}/maxresdefault.jpg`}
-                                            alt={featuredPodcast.title}
-                                            fill
-                                            className="object-cover rounded-2xl"
-                                        />
-                                        <div className="absolute inset-0 bg-black/30 rounded-2xl"></div>
-                                        <a
-                                            href={featuredPodcast.youtubeUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="absolute inset-0 flex items-center justify-center group"
-                                        >
-                                            <div className="bg-red-600 rounded-full p-6 group-hover:scale-110 transition-transform shadow-2xl">
-                                                <Icon icon="solar:play-circle-bold" className="text-white text-5xl" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Slide 4: Tahliliy Dars */}
-                    <div className="px-2">
-                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-8'>
-                                <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
-                                    <Icon
-                                        icon="solar:chart-2-bold"
-                                        className="text-secondary text-xl inline-block me-2"
-                                    />
-                                    <p className='text-secondary text-sm font-semibold text-center lg:text-start'>
-                                        Tahliliy dars
-                                    </p>
-                                </div>
-                                <h1 className='text-midnight_text text-4xl sm:text-5xl font-semibold pt-5 lg:pt-0 mb-4'>
-                                    {tahliliyLesson.topic}
-                                </h1>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <Icon icon="solar:user-bold" className="text-primary text-xl" />
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-gray-900">{tahliliyLesson.mentorName}</p>
-                                        <p className="text-sm text-gray-600">{tahliliyLesson.mentorTitle}</p>
-                                    </div>
-                                </div>
-                                <p className='text-black/70 text-lg mb-4'>
-                                    {tahliliyLesson.description}
-                                </p>
-                                <div className="flex flex-wrap items-center gap-4">
-                                    <Link
-                                        href="/lessons#tahliliy"
-                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                    >
-                                        Barcha tahliliy darslarni ko'rish
-                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                    </Link>
-                                </div>
-                                <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
-                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
-                                        <Icon
-                                            icon="solar:magnifer-linear"
-                                            className="text-white text-4xl inline-block"
-                                        />
-                                    </button>
-                                </div>
-                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-span-6 flex justify-center'>
-                                <div className="relative w-full max-w-md">
-                                    <div className="relative h-64 rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={`${getImagePrefix()}${tahliliyLesson.imgSrc}`}
-                                            alt={tahliliyLesson.topic}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                        <div className="absolute bottom-4 left-4 right-4">
-                                            <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-2">
-                                                <p className="text-white font-semibold text-sm">{tahliliyLesson.subject}</p>
-                                            </div>
-                                        </div>
-                                        <a
-                                            href={tahliliyLesson.youtubeUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="absolute top-4 right-4 bg-red-600 rounded-full p-4 hover:scale-110 transition-transform"
-                                        >
-                                            <Icon icon="solar:play-circle-bold" className="text-white text-3xl" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Slide 5: Amaliy Dars */}
-                    <div className="px-2">
-                        <div className='grid grid-cols-1 lg:grid-cols-12 space-x-1 items-center gap-8'>
-                            <div className='col-span-6 flex flex-col gap-8'>
-                                <div className='flex gap-2 mx-auto lg:mx-0 mb-4'>
-                                    <Icon
-                                        icon="solar:test-tube-bold"
-                                        className="text-secondary text-xl inline-block me-2"
-                                    />
-                                    <p className='text-secondary text-sm font-semibold text-center lg:text-start'>
-                                        Amaliy dars
-                                    </p>
-                                </div>
-                                <h1 className='text-midnight_text text-4xl sm:text-5xl font-semibold pt-5 lg:pt-0 mb-4'>
-                                    {amaliyLesson.topic}
-                                </h1>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <Icon icon="solar:user-bold" className="text-primary text-xl" />
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-gray-900">{amaliyLesson.mentorName}</p>
-                                        <p className="text-sm text-gray-600">{amaliyLesson.mentorTitle}</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">
-                                        {amaliyLesson.difficulty}
-                                    </span>
-                                    <span className="text-xs text-gray-500 flex items-center gap-1">
-                                        <Icon icon="solar:calendar-bold" className="text-xs" />
-                                        Mavzu
-                                    </span>
-                                </div>
-                                <p className='text-black/70 text-lg mb-4'>
-                                    Kimyo fani - BARCHA UCHUN! loyihasi doirasidagi amaliy laboratoriya darsi
-                                </p>
-                                <div className="flex flex-wrap items-center gap-4">
-                                    <Link
-                                        href="/lessons#amaliy"
-                                        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
-                                    >
-                                        Barcha amaliy darslarni ko'rish
-                                        <Icon icon="solar:arrow-right-bold" className="text-xl" />
-                                    </Link>
-                                </div>
-                                <div className="relative rounded-full pt-5 lg:pt-0">
-                                    <input type="Email address" name="q" className="py-6 lg:py-8 pl-8 pr-20 text-lg w-full text-black rounded-full focus:outline-none shadow-input-shadow" placeholder="Qaysi mavzuni qidiramiz?" autoComplete="off" />
-                                    <button className="bg-secondary p-5 rounded-full absolute right-2 top-2 ">
-                                        <Icon
-                                            icon="solar:magnifer-linear"
-                                            className="text-white text-4xl inline-block"
-                                        />
-                                    </button>
-                                </div>
-                                <div className='flex items-center justify-between pt-10 lg:pt-4'>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Tahliliy darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Video darslar</p>
-                                    </div>
-                                    <div className='flex gap-2'>
-                                        <Image src={`${getImagePrefix()}images/banner/check-circle.svg`} alt="check-image" width={30} height={30} className='smallImage' />
-                                        <p className='text-sm sm:text-lg font-normal text-black'>Real keyslar asosida podkastlar</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-span-6 flex justify-center'>
-                                <div className="relative w-full max-w-md">
-                                    <div className="relative" style={{ paddingBottom: '56.25%' }}>
-                                        <Image
-                                            src={`https://img.youtube.com/vi/${amaliyLesson.youtubeId}/maxresdefault.jpg`}
-                                            alt={amaliyLesson.topic}
-                                            fill
-                                            className="object-cover rounded-2xl"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
-                                        <div className="absolute bottom-4 left-4 right-4">
-                                            <div className="bg-primary/90 backdrop-blur-sm rounded-lg px-3 py-2">
-                                                <p className="text-white font-semibold text-sm">{amaliyLesson.subject}</p>
-                                            </div>
-                                        </div>
-                                        <a
-                                            href={amaliyLesson.youtubeUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="absolute top-4 right-4 bg-red-600 rounded-full p-4 hover:scale-110 transition-transform"
-                                        >
-                                            <Icon icon="solar:play-circle-bold" className="text-white text-3xl" />
-                                        </a>
-                                        <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-500 text-white">
-                                                Amaliy lab
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Slider>
-            </div>
-        </section >
-    )
+interface ShowcaseItem {
+  id: string;
+  type: "lesson" | "podcast" | "amaliy";
+  tabLabel: string;
+  tabIcon: string;
+  title: string;
+  subtitle: string;
+  mentorOrGuests: string;
+  badge: string;
+  badgeColor: string;
+  imgSrc: string;
+  isExternalImage?: boolean;
+  youtubeId: string;
+  youtubeUrl: string;
 }
+
+const showcaseItems: ShowcaseItem[] = [
+  {
+    id: "lesson",
+    type: "lesson",
+    tabLabel: "Tahliliy dars",
+    tabIcon: "solar:chart-2-bold",
+    title: lessonsData[0]?.topic || "Olimpiada masalalarini oson yechish usullari",
+    subtitle: "Fan olimpiadalariga tayyorgarlik bo'yicha chuqur tahliliy video dars",
+    mentorOrGuests: `${lessonsData[0]?.mentorName || "Abdushukur Axadov"} • ${lessonsData[0]?.mentorTitle || "Matematika eksperti"}`,
+    badge: "Matematika",
+    badgeColor: "bg-blue-600",
+    imgSrc: lessonsData[0]?.imgSrc || "images/courses/math.jpg",
+    youtubeId: lessonsData[0]?.youtubeId || "ZZS8hVWOREg",
+    youtubeUrl: lessonsData[0]?.youtubeUrl || "https://youtu.be/ZZS8hVWOREg",
+  },
+  {
+    id: "podcast",
+    type: "podcast",
+    tabLabel: "EduX Podkast",
+    tabIcon: "solar:podcast-bold",
+    title: "EduX | 3-son — Xalqaro olimpiada sovrindorlari bilan suhbat",
+    subtitle: "G'alaba ortidagi mashaqqatli yo'l, xalqaro tajriba va strategiyalar",
+    mentorOrGuests: "Daler Rahimov (IChO Oltin), Elbek Zohidjonov (IMO Kumush), Elbek Uroqov (IPhO Bronza)",
+    badge: "3-son Podkast",
+    badgeColor: "bg-purple-600",
+    imgSrc: "https://img.youtube.com/vi/7MQyOQ7y0GI/maxresdefault.jpg",
+    isExternalImage: true,
+    youtubeId: "7MQyOQ7y0GI",
+    youtubeUrl: "https://www.youtube.com/watch?v=7MQyOQ7y0GI",
+  },
+  {
+    id: "amaliy",
+    type: "amaliy",
+    tabLabel: "Amaliy laboratoriya",
+    tabIcon: "solar:test-tube-bold",
+    title: "Titrlash jarayoni va kimyoviy laboratoriya amaliyoti",
+    subtitle: "#Kimyo_barcha_uchun loyihasi doirasidagi amaliy laboratoriya ishlari",
+    mentorOrGuests: "Firdavs Sobirov • Kimyo eksperti (IChO sovrindori)",
+    badge: "Kimyo — Barchaga",
+    badgeColor: "bg-emerald-600",
+    imgSrc: "https://img.youtube.com/vi/xFleHlGV-00/maxresdefault.jpg",
+    isExternalImage: true,
+    youtubeId: "xFleHlGV-00",
+    youtubeUrl: "https://youtu.be/xFleHlGV-00",
+  },
+];
+
+const subjectPills = [
+  { name: "Matematika", icon: "solar:calculator-bold" },
+  { name: "Fizika", icon: "solar:atom-bold" },
+  { name: "Kimyo", icon: "solar:test-tube-bold" },
+  { name: "Biologiya", icon: "solar:leaf-bold" },
+  { name: "Informatika", icon: "solar:code-bold" },
+];
+
+const Hero: React.FC = () => {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<"lesson" | "podcast" | "amaliy">("lesson");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeVideo, setActiveVideo] = useState<{
+    isOpen: boolean;
+    videoId: string;
+    title: string;
+  } | null>(null);
+
+  const currentShowcase = showcaseItems.find((item) => item.id === activeTab) || showcaseItems[0];
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/lessons?q=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push("/lessons");
+    }
+  };
+
+  return (
+    <section id="home-section" className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-slateGray">
+      {/* Background Decorative Gradient Blobs */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 -right-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* LEFT COLUMN: Core Value Proposition & Actions */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Trust Pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/90 border border-primary/20 rounded-full shadow-sm w-fit">
+              <span className="flex h-2.5 w-2.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+              </span>
+              <span className="text-xs sm:text-sm font-semibold text-gray-800">
+                Fan olimpiadalari markazi bilan hamkorlikdagi rasmiy platforma
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-midnight_text text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-[1.15]">
+              Ilm-fan olimpiadalariga{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-600 to-secondary">
+                ishonchli tayyorgarlik
+              </span>{" "}
+              va rivojlanish muhiti
+            </h1>
+
+            {/* Sub-headline */}
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Matematika, fizika, kimyo, biologiya va informatika fanlaridan ekspertlar boshchiligidagi tahliliy darslar, amaliy laboratoriyalar, real podkastlar hamda shaffof reyting tizimi.
+            </p>
+
+            {/* Action Buttons (CTAs) */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              {/* Primary Telegram Registration CTA */}
+              <a
+                href={TELEGRAM_BOT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-secondary px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-secondary/25 hover:bg-secondary/90 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                <Icon icon="mdi:telegram" className="text-2xl" />
+                <span>Olimpiadaga ro'yxatdan o'tish</span>
+              </a>
+
+              {/* Secondary Lessons Link */}
+              <Link
+                href="/lessons"
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary/30 bg-white px-6 py-3.5 text-base font-semibold text-primary hover:border-primary hover:bg-primary/5 transition-all"
+              >
+                <span>Darslarni ko'rish</span>
+                <Icon icon="solar:arrow-right-bold" className="text-lg" />
+              </Link>
+
+              {/* App Portal Direct Link */}
+              <a
+                href="https://app.edux.center"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-primary transition-colors px-2 py-1"
+              >
+                <span>Platformaga kirish</span>
+                <Icon icon="solar:arrow-right-up-linear" className="text-base" />
+              </a>
+            </div>
+
+            {/* Topic Search Box */}
+            <div className="pt-2">
+              <form onSubmit={handleSearchSubmit} className="relative w-full max-w-xl">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Qaysi mavzuni o'rganamiz? (masalan: Titrlash, Algebra...)"
+                  className="w-full rounded-full bg-white border border-gray-200 py-4 pl-6 pr-14 text-sm sm:text-base text-gray-900 placeholder:text-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                />
+                <button
+                  type="submit"
+                  aria-label="Qidirish"
+                  className="absolute right-2 top-2 h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white hover:bg-secondary transition-colors"
+                >
+                  <Icon icon="solar:magnifer-linear" className="text-xl" />
+                </button>
+              </form>
+
+              {/* Quick Subject Filter Pills */}
+              <div className="flex flex-wrap items-center gap-2 mt-3">
+                <span className="text-xs font-semibold text-gray-500">Tezkor fanlar:</span>
+                {subjectPills.map((subj) => (
+                  <Link
+                    key={subj.name}
+                    href={`/lessons`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 bg-white hover:bg-primary hover:text-white text-gray-700 text-xs font-medium rounded-full border border-gray-200 shadow-2xs transition-all"
+                  >
+                    <Icon icon={subj.icon} className="text-xs" />
+                    <span>{subj.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Trust Points */}
+            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-200/80">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 text-green-700">
+                  <Icon icon="solar:check-circle-bold" className="text-lg" />
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Tahliliy darslar</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-primary">
+                  <Icon icon="solar:test-tube-bold" className="text-lg" />
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Amaliy laboratoriya</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700">
+                  <Icon icon="solar:cup-star-bold" className="text-lg" />
+                </div>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Respublika reytingi</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Interactive Showcase Card */}
+          <div className="lg:col-span-5 relative">
+            {/* Top Floating Badge */}
+            <div className="hidden sm:flex absolute -top-5 -right-2 z-20 items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-blue-100">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xl shadow-md">
+                <Icon icon="solar:medal-ribbons-star-bold" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-gray-900">Xalqaro olimpiadalar</p>
+                <p className="text-[11px] text-gray-500">Terma jamoa saralashlari</p>
+              </div>
+            </div>
+
+            {/* Showcase Main Container */}
+            <div className="bg-white rounded-3xl p-5 shadow-2xl border border-gray-100 relative">
+              {/* Tab Switcher */}
+              <div className="grid grid-cols-3 gap-1.5 p-1 bg-gray-100/90 rounded-2xl mb-4">
+                {showcaseItems.map((item) => {
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveTab(item.type)}
+                      className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-bold transition-all ${
+                        isActive
+                          ? "bg-white text-primary shadow-sm"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      <Icon icon={item.tabIcon} className="text-base flex-shrink-0" />
+                      <span className="truncate">{item.tabLabel}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Card Preview */}
+              <div className="relative group overflow-hidden rounded-2xl aspect-[16/10] bg-gray-900">
+                <Image
+                  src={
+                    currentShowcase.isExternalImage
+                      ? currentShowcase.imgSrc
+                      : `${getImagePrefix()}${currentShowcase.imgSrc}`
+                  }
+                  alt={currentShowcase.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  priority
+                />
+
+                {/* Dark Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                {/* Badge Tag */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold text-white shadow-md ${currentShowcase.badgeColor}`}>
+                    {currentShowcase.badge}
+                  </span>
+                </div>
+
+                {/* Play Button Trigger */}
+                <button
+                  onClick={() =>
+                    setActiveVideo({
+                      isOpen: true,
+                      videoId: currentShowcase.youtubeId,
+                      title: currentShowcase.title,
+                    })
+                  }
+                  aria-label="Videoni tomosha qilish"
+                  className="absolute inset-0 flex items-center justify-center z-10 group/btn"
+                >
+                  <div className="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl group-hover/btn:scale-110 group-hover/btn:bg-red-700 transition-transform">
+                    <Icon icon="solar:play-circle-bold" className="text-3xl ml-0.5" />
+                  </div>
+                </button>
+
+                {/* Bottom Overlay Info */}
+                <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
+                  <p className="text-xs font-semibold text-gray-200 line-clamp-1 mb-1">
+                    {currentShowcase.mentorOrGuests}
+                  </p>
+                  <h3 className="text-sm sm:text-base font-bold text-white leading-snug line-clamp-2">
+                    {currentShowcase.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Card Meta & Bottom Controls */}
+              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                <div className="flex-1 pr-3">
+                  <p className="text-xs text-gray-500 line-clamp-1">
+                    {currentShowcase.subtitle}
+                  </p>
+                </div>
+                <button
+                  onClick={() =>
+                    setActiveVideo({
+                      isOpen: true,
+                      videoId: currentShowcase.youtubeId,
+                      title: currentShowcase.title,
+                    })
+                  }
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary whitespace-nowrap"
+                >
+                  <span>Ko'rish</span>
+                  <Icon icon="solar:arrow-right-bold" className="text-sm" />
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom Floating Badge */}
+            <div className="hidden sm:flex absolute -bottom-5 -left-4 z-20 items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-blue-100">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xl shadow-md">
+                <Icon icon="solar:ranking-bold" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-gray-900">Respublika Reytingi</p>
+                <p className="text-[11px] text-gray-500">Shaffof monitoring tizimi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Video Modal */}
+      {activeVideo && activeVideo.isOpen && (
+        <div
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 backdrop-blur-xs"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-100">
+              <h3 className="font-bold text-gray-900 text-sm sm:text-base line-clamp-1 pr-4">
+                {activeVideo.title}
+              </h3>
+              <button
+                onClick={() => setActiveVideo(null)}
+                aria-label="Yopish"
+                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors"
+              >
+                <Icon icon="solar:close-circle-bold" className="text-xl" />
+              </button>
+            </div>
+
+            {/* Video Player */}
+            <div className="relative w-full aspect-video bg-black">
+              <iframe
+                src={`https://www.youtube.com/embed/${activeVideo.videoId}?autoplay=1`}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
 
 export default Hero;
