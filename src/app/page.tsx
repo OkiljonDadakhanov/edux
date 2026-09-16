@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "@/components/Home/Hero";
+import DailyDemoOlymp from "@/components/Home/DailyDemoOlymp";
 import Courses from "@/components/Home/Courses";
 import Mentor from "@/components/Home/Mentor";
 import Team from "@/components/Home/Team";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
+      <DailyDemoOlymp />
       <Hero />
       <Stat />
       <Courses />

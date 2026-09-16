@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home-section" className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-slateGray">
+    <section id="home-section" className="relative py-16 lg:py-20 overflow-hidden bg-slateGray">
       {/* Background Decorative Gradient Blobs */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="pointer-events-none absolute top-1/2 -right-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
